@@ -67,7 +67,7 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "CITM-GameJam-2026.slnx",
+    "dotnet.defaultSolution": "CITM-2026.slnx",
     "bg3ModHelper.rootModPath": "f:\\More Dev Shit\\Unity Projects 2\\CITM-GameJam-2026",
     "bg3ModHelper.packingPriority": 0
 }
