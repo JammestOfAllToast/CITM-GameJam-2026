@@ -788,6 +788,7 @@ GameObject:
   - component: {fileID: 1902762669}
   - component: {fileID: 1902762668}
   - component: {fileID: 1902762670}
+  - component: {fileID: 1902762671}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -860,7 +861,30 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
-  gravity: 0
+  gravity: 1
+--- !u!114 &1902762671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902762667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9106789f3a0b54b499e0e9d89d791cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  Oxygen: 100
+  OxygenUsageSpeed: 1
+  OxygenRegenSpeed: 0.75
+  Paranoia: 0
+  ParanoiaUsageSpeed: 0.25
+  ParanoiaRegenSpeed: 0.5
+  ParanoiaHardLimit: 115
+  OxygenUsageSpeedHardLimit: 2.75
+  IsThereOxygenAround: 0
+  IsDead: 0
+  IsParanoid: 0
 --- !u!1 &2053173832
 GameObject:
   m_ObjectHideFlags: 0
