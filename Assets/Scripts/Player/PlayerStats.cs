@@ -45,7 +45,7 @@ public bool IsParanoid;
                     if(Paranoia < 0f){
                         Paranoia = 0f; // If paranoia is at its lowest, hard limit it to 0
                     }
-                    else{
+                    else if (Paranoia > 0f){
                         Paranoia -= ParanoiaRegenSpeed * Time.deltaTime; // Increases Sanity if the environment is safe
                     }
                 }
