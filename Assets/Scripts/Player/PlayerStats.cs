@@ -1,5 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
-
+using TMPro;
 public class PlayerStats : MonoBehaviour
 {
 [Header("Stats")]
@@ -16,18 +17,22 @@ public float OxygenUsageSpeedHardLimit;
 public bool IsThereOxygenAround;
 public bool IsDead;
 public bool IsParanoid;
-
+public bool HasWon;
+[Header("OtherScripts")]
+public TimeController TC;
+[SerializeField] TextMeshProUGUI Wintext;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         IsDead = false;
+        Wintext.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!IsDead){
+        if(!IsDead && TC.CurrentTime < TC.EndHour * 60f){
             
             if(Paranoia > 100f && OxygenUsageSpeed < OxygenUsageSpeedHardLimit)
             {
@@ -60,6 +65,13 @@ public bool IsParanoid;
             }
             if(Paranoia < ParanoiaHardLimit && IsParanoid){Paranoia += ParanoiaUsageSpeed * Time.deltaTime;}
             else if(Paranoia > ParanoiaHardLimit){Paranoia = ParanoiaHardLimit;}
+        }
+
+        else if(!IsDead && TC.CurrentTime > TC.EndHour * 60f)
+        {
+            HasWon = true;
+            Time.timeScale = 0;
+            Wintext.enabled = true;
         }
     }
 }
