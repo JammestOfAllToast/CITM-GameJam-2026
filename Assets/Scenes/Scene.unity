@@ -435,6 +435,8 @@ MonoBehaviour:
   objectInteractMessage: Step 2
   stepId: step2
   requirement: 
+  time: 0
+  ogMSG: 
 --- !u!65 &769632406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -611,6 +613,8 @@ MonoBehaviour:
   objectInteractMessage: Step 1
   stepId: step1
   requirement: 
+  time: 0
+  ogMSG: 
 --- !u!65 &869112377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1162,7 +1166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Hold E to fix
   stepId: radio
-  requirement: 
+  requirement: Welder
+  time: 10
+  ogMSG: 
 --- !u!65 &1520778401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1702,7 +1708,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
-  gravity: 1
+  gravity: 0
 --- !u!114 &1902762671
 MonoBehaviour:
   m_ObjectHideFlags: 0
