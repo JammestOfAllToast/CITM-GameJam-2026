@@ -36,14 +36,12 @@ public class StepManager : MonoBehaviour, IInteractable
         }
         Hide();
         taskIndex = findMyTask();
-        Debug.Log(taskIndex);
     }
 
 
     void Update()
     {
         if (taskManager.taskRepo != null && taskIndex != -1) {
-           // if (stepId == "radio") { Debug.Log(taskManager.activeTasks[taskIndex].steps[taskManager.activeTasks[taskIndex].currentStep].id); } 
             if (taskManager.activeTasks[taskIndex].name == default(TaskManager.Task).name || taskManager.activeTasks[taskIndex].steps[taskManager.activeTasks[taskIndex].currentStep].id != stepId) 
             {
                 Hide();

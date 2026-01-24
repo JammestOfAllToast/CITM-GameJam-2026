@@ -59,7 +59,6 @@ public class TaskManager : MonoBehaviour
         taskRepo[1].importance = 2;
         taskRepo[1].currentStep = 0;
         taskRepo[1].steps = new Step[1];
-            taskRepo[1].steps[0] = hullSteps[Random.Range(0, 2)]; //Must be randomized upon adding
         taskRepo[1].varStartName = new string[1];
         taskRepo[1].varStartMod = new float[1];
             taskRepo[1].varStartName[0] = "o2rs"; //change to ship oxigen usage instead
@@ -92,9 +91,7 @@ public class TaskManager : MonoBehaviour
             taskRepo[2].varEndMod[0] = 2f;
 
 
-        TaskAdd(0);
-        TaskAdd(1);
-        TaskAdd(2);
+        ChooseRandomTask();
     }
 
     // Update is called once per frame
@@ -115,7 +112,7 @@ public class TaskManager : MonoBehaviour
                 if (activeTasks[i].steps[activeTasks[i].currentStep].id == newId && activeTasks[i].currentStep < activeTasks[i].steps.Length)
                 {
                     
-                    Debug.Log(activeTasks[i].name + " [" + activeTasks[i].currentStep+1 + " / " + activeTasks[i].steps.Length + "]");
+                    Debug.Log(activeTasks[i].name + " [" + (1 + activeTasks[i].currentStep) + " / " + activeTasks[i].steps.Length + "]");
                     Debug.Log(activeTasks[i].steps[activeTasks[i].currentStep].name + " [" + activeTasks[i].steps[activeTasks[i].currentStep].location + "]");
                     activeTasks[i].currentStep++;
                 }
@@ -162,6 +159,22 @@ public class TaskManager : MonoBehaviour
             }
         }
         activeTasks[index] = default(Task);
+    }
+
+    public void ChooseRandomTask()
+    {
+        int randomTask = Random.Range(0, taskRepo.Length);
+        if (taskRepo[randomTask].name == "Breach In Hull!")
+        {
+            taskRepo[randomTask].steps[0] = hullSteps[Random.Range(0, hullSteps.Length)]; //Add cses for Fire and any other that has random placement
+        }
+        if (activeTasks[randomTask].name == taskRepo[randomTask].name)
+        {
+            ChooseRandomTask();
+        } else
+        {
+            TaskAdd(randomTask);
+        }
     }
 
     public void TaskAdd(int index)
