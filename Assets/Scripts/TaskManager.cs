@@ -32,7 +32,7 @@ public class TaskManager : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
 
-        taskRepo = new Task[3];
+        taskRepo = new Task[4];
         activeTasks = new Task[taskRepo.Length];
 
         hullSteps = new Step[3];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
@@ -89,6 +89,22 @@ public class TaskManager : MonoBehaviour
         taskRepo[2].varEndMod = new float[1];
             taskRepo[2].varEndName[0] = "o2rs";
             taskRepo[2].varEndMod[0] = 2f;
+
+        taskRepo[3].name = "Example";
+        taskRepo[3].importance = 1;
+        taskRepo[3].currentStep = 0;
+        taskRepo[3].steps = new Step[1];
+            taskRepo[3].steps[0].id = "example1";
+            taskRepo[3].steps[0].name = "Do the Thing";
+            taskRepo[3].steps[0].location = "Garden";
+        taskRepo[3].varStartName = new string[1];
+        taskRepo[3].varStartMod = new float[1];
+            taskRepo[3].varStartName[0] = "02rs";
+            taskRepo[3].varStartMod[0] = 0.5f;
+        taskRepo[3].varEndName = new string[1];
+        taskRepo[3].varEndMod = new float[1];
+            taskRepo[3].varEndName[0] = "o2rs";
+            taskRepo[3].varEndMod[0] = 2f;
 
 
         ChooseRandomTask();
