@@ -26,6 +26,8 @@ public class TaskManager : MonoBehaviour
     public Task[] taskRepo;
     public Task[] activeTasks;
 
+    public Step[] hullSteps;
+
     void Start()
     {
         stats = GetComponent<PlayerStats>();
@@ -33,6 +35,16 @@ public class TaskManager : MonoBehaviour
         taskRepo = new Task[3];
         activeTasks = new Task[taskRepo.Length];
 
+        hullSteps = new Step[3];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
+        hullSteps[0].name = "Mend Hull (Needs Welder)";
+        hullSteps[0].id = "gardenHull";
+        hullSteps[0].location = "Garden";
+        hullSteps[1].name = "Mend Hull (Needs Welder)";
+        hullSteps[1].id = "engineHull";
+        hullSteps[1].location = "Engine Room";
+        hullSteps[2].name = "Mend Hull (Needs Welder)";
+        hullSteps[2].id = "navHull";
+        hullSteps[2].location = "Navigation Room";
 
 
         taskRepo[0].name = "Broken Radio";
@@ -46,10 +58,8 @@ public class TaskManager : MonoBehaviour
         taskRepo[1].name = "Breach In Hull!";
         taskRepo[1].importance = 2;
         taskRepo[1].currentStep = 0;
-        taskRepo[1].steps = new Step[1]; //create a hull breach repo, when this task is added, a random one of the breach in hull steps can be added instead
-            taskRepo[1].steps[0].id = "garenHull";
-            taskRepo[1].steps[0].location = "Garden";
-            taskRepo[1].steps[0].name = "Mend Hull (Needs Welder)";
+        taskRepo[1].steps = new Step[1];
+            taskRepo[1].steps[0] = hullSteps[Random.Range(0, 2)]; //Must be randomized upon adding
         taskRepo[1].varStartName = new string[1];
         taskRepo[1].varStartMod = new float[1];
             taskRepo[1].varStartName[0] = "o2rs"; //change to ship oxigen usage instead
@@ -99,13 +109,13 @@ public class TaskManager : MonoBehaviour
 
     public void StepComplete(string newId)
     {
-        if (activeTasks[0].name != default(Task).name) {
-            for (int i = 0; i < activeTasks.Length; i++)
-            {
+        for (int i = 0; i < activeTasks.Length; i++)
+        {
+            if (activeTasks[i].name != default(Task).name) {
                 if (activeTasks[i].steps[activeTasks[i].currentStep].id == newId && activeTasks[i].currentStep < activeTasks[i].steps.Length)
                 {
                     
-                    Debug.Log(activeTasks[i].name + " [" + activeTasks[i].currentStep + " / " + activeTasks[i].steps.Length + "]");
+                    Debug.Log(activeTasks[i].name + " [" + activeTasks[i].currentStep+1 + " / " + activeTasks[i].steps.Length + "]");
                     Debug.Log(activeTasks[i].steps[activeTasks[i].currentStep].name + " [" + activeTasks[i].steps[activeTasks[i].currentStep].location + "]");
                     activeTasks[i].currentStep++;
                 }
