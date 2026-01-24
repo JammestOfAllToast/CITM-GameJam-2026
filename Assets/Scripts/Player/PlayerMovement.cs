@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         rb.useGravity = false;
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         float flyInput = flyAction.ReadValue<float>();
-        moveDirection = camOrientation.forward * moveInput.y + camOrientation.right * moveInput.x + camOrientation.up * flyInput;
+        moveDirection = camOrientation.forward * moveInput.y + camOrientation.right * moveInput.x + orientation.up * flyInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 }
