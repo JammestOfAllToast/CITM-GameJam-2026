@@ -16,6 +16,9 @@ public class StepManager : MonoBehaviour, IInteractable
 
     public bool hidden;
 
+    public float waitTime;
+    private bool timerStarted = false;
+
     private int taskIndex;
 
     private TaskManager taskManager;
@@ -50,6 +53,16 @@ public class StepManager : MonoBehaviour, IInteractable
                 Show();
             }
         }
+        if (timerStarted)
+        {
+            if (waitTime <= 0) {
+                taskManager.StepComplete(stepId); 
+                objectInteractMessage = "Step Complete";
+            }
+            waitTime -= Time.deltaTime;
+            if (!hidden) {objectInteractMessage = "Please wait " + waitTime.ToString("F1") + " seconds";}
+        }
+
     }
 
     public int findMyTask()
@@ -89,11 +102,10 @@ public class StepManager : MonoBehaviour, IInteractable
                 if (GameObject.Find(requirement) != null)
                 {
                     time -= Time.deltaTime;
-                    objectInteractMessage = ogMSG + " (" + time.ToString("F2") + " seconds left)";
+                    objectInteractMessage = ogMSG + " (" + time.ToString("F1") + " seconds left)";
                     if (time <= 0) 
-                    { 
-                        taskManager.StepComplete(stepId); 
-                        objectInteractMessage = "Step Complete";
+                    {                         
+                        timerStarted = true;
                     }
                 } else
                 {
@@ -104,9 +116,8 @@ public class StepManager : MonoBehaviour, IInteractable
                 time -= Time.deltaTime;
                 objectInteractMessage = ogMSG + " (" + time.ToString("F2") + " seconds left)";
                 if (time <= 0) 
-                {
-                    taskManager.StepComplete(stepId); 
-                    objectInteractMessage = "Step Complete";            
+                {     
+                    timerStarted = true;   
                 }
                     
             }  

@@ -24,7 +24,7 @@ public class ToolManager : MonoBehaviour, IInteractable
     {
         if (objectHolder.holding != null)
         {
-            objectHolder.SwitchObj(objectHolder.holding.name, name);
+            objectHolder.SwitchObj(objectHolder.holding.name, toolName);
         } else
         {
             objectHolder.TurnOn(toolName);

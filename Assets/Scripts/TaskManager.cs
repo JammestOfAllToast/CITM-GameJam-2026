@@ -92,6 +92,8 @@ public class TaskManager : MonoBehaviour
 
 
         ChooseRandomTask();
+        ChooseRandomTask();
+        ChooseRandomTask();
     }
 
     // Update is called once per frame
