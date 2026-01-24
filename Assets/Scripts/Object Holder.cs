@@ -20,12 +20,12 @@ public class ObjectHolder : MonoBehaviour
     {
         //TurnOn("Welder");
     }
-    void TurnOn(string name)
+    public void TurnOn(string name)
     {
         holding = transform.Find(name).gameObject;
         holding.SetActive(true);
     }
-    void SwitchObj(string name1, string name2)
+    public void SwitchObj(string name1, string name2)
     {
         holding = transform.Find(name1).gameObject;
         holding.SetActive(false);
