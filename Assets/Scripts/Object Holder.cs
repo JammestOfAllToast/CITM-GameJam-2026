@@ -18,7 +18,7 @@ public class ObjectHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //TurnOn("Welder");
     }
     void TurnOn(string name)
     {

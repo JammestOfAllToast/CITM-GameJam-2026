@@ -14,6 +14,31 @@ public class InteractionController : MonoBehaviour
 
     IInteractable currentTargetedInteractable;
 
+    private InputSystem_Actions playerControls;
+    private InputAction interactAction;
+
+    private void Awake()
+    {
+        // Initialize input system
+        playerControls = new InputSystem_Actions();
+    }
+
+    private void OnEnable()
+    {
+        interactAction = playerControls.Player.Interact;
+        interactAction.Enable();
+        
+        // Enable the player action map
+        playerControls.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        interactAction.Disable();
+        playerControls.Player.Disable();
+    }
+
+
     public void Update()
     {
         UpdateCurrentInteractable();
@@ -45,7 +70,8 @@ public class InteractionController : MonoBehaviour
 
     void CheckForInteractionInput()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && currentTargetedInteractable != null) 
+        bool interact = interactAction.IsPressed();
+        if (interact && currentTargetedInteractable != null) 
         {
             currentTargetedInteractable.Interact();
         }
