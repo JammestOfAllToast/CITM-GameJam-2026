@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     private GameObject interior;
     private GameObject exterior;
 
-
+    public int stage;
 
     void Start()
     {
