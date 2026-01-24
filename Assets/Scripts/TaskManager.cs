@@ -23,16 +23,17 @@ public class TaskManager : MonoBehaviour
         public float[] varEndMod; // cant be used on speed, because it will permanently change it. Unless its to out it back to default
     }
 
-    public Task[] taskRepo;
+    public Task[4] taskRepo;
     public Task[] activeTasks;
 
     public Step[] hullSteps;
+
+    public Step[] fireSteps;
 
     void Start()
     {
         stats = GetComponent<PlayerStats>();
 
-        taskRepo = new Task[3];
         activeTasks = new Task[taskRepo.Length];
 
         hullSteps = new Step[3];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
@@ -90,7 +91,25 @@ public class TaskManager : MonoBehaviour
             taskRepo[2].varEndName[0] = "o2rs";
             taskRepo[2].varEndMod[0] = 2f;
 
+                // If lights below 0, then task is triggered
+                taskRepo[3].name = "Fix Lights";
+        taskRepo[3].importance = 2;
+        taskRepo[3].currentStep = 0;
+        taskRepo[3].steps = new Step[1]; //create a hull breach repo, when this task is added, a random one of the breach in hull steps can be added instead
+            taskRepo[3].steps[0].id = "lights";
+            taskRepo[3].steps[0].location = "Engine Room";
+            taskRepo[3].steps[0].name = "Reset breakers (fix solar panels first)";
+            // CHANGE LATER
+        // taskRepo[2].varStartName = new string[1];
+        // taskRepo[2].varStartMod = new float[1];
+        //     taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+        //     taskRepo[2].varStartMod[0] = 0.5f;
+        // taskRepo[2].varEndName = new string[1];
+        // taskRepo[2].varEndMod = new float[1];
+        //     taskRepo[2].varEndName[0] = "o2rs";
+        //     taskRepo[2].varEndMod[0] = 2f;
 
+        ChooseRandomTask();
         ChooseRandomTask();
         ChooseRandomTask();
         ChooseRandomTask();
