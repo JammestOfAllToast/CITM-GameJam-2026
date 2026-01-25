@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 5798466870267021076}
   m_Layer: 5
   m_Name: Placeholder Time text
-  m_TagString: Untagged
+  m_TagString: TimeWizard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -963,6 +963,9 @@ MonoBehaviour:
   HasWon: 0
   TC: {fileID: 5798466870267021076}
   Wintext: {fileID: 8443471704654688534}
+  Fuel: 0
+  FuelUsage: 0
+  HasElectricity: 0
 --- !u!114 &6139323199905780178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,6 +994,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   stats: {fileID: 0}
+  gManager: {fileID: 0}
+  timeController: {fileID: 0}
+  minTimeToTask: 0
+  maxTimeToTask: 0
+  taskRepo: []
+  hullSteps: []
+  fireSteps: []
+  activeTasks: []
 --- !u!1 &7328052698429604177
 GameObject:
   m_ObjectHideFlags: 0

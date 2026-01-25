@@ -4,6 +4,14 @@ using System.Collections;
 public class TaskManager : MonoBehaviour
 {
     public PlayerStats stats;
+    public GameManager gManager;
+    public TimeController timeController;
+    public PlayerMovement movement;
+
+    public float minTimeToTask;
+    public float maxTimeToTask;
+
+    
 
     [System.Serializable]
     public struct Step
@@ -33,13 +41,20 @@ public class TaskManager : MonoBehaviour
     public Task[] taskRepo;
     public Step[] hullSteps;
     public Step[] fireSteps;
+    
 
     // Don't touch in Inspector
     public Task[] activeTasks;
 
+    private int countActiveTasks = 0;
+
     void Start()
     {
         stats = GetComponent<PlayerStats>();
+        gManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        timeController = GameObject.FindWithTag("TimeWizard").GetComponent<TimeController>();
+        movement = GetComponent<PlayerMovement>();
+
 
         if (taskRepo.Length > 0)
         {
@@ -66,20 +81,56 @@ public class TaskManager : MonoBehaviour
         // {
         //     s.sceneObject.SetActive(false);
         // }
+        if (FindTaskOfName(taskRepo, "Warm Milk") != -1 && FindTaskOfName(taskRepo, "Hug Teddy bear") != -1 && FindTaskOfName(taskRepo, "Make Food") == -1) 
+        {
+            TaskAdd(FindTaskOfName(taskRepo, "Warm Milk"));
+            TaskAdd(FindTaskOfName(taskRepo, "Hug Teddy bear"));
+            TaskAdd(FindTaskOfName(taskRepo, "Make Food"));
+        }
 
-        ChooseRandomTask();
-        ChooseRandomTask();
-        ChooseRandomTask();
+        if (gManager != null)
+        {
+            for (int i = 0; i < gManager.stage + 2; i++)
+            {
+                ChooseRandomTask();
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (stats != null)
+        {
+            if (!stats.HasElectricity)
+            {
+                if (FindTaskOfName(activeTasks, "Fix Lights") == -1)
+                {
+                    TaskAdd(FindTaskOfName(taskRepo, "Fix Lights"));
+                }
+            }
+        }
+
+        if (timeController.CurrentTime % Random.Range(minTimeToTask, maxTimeToTask) == 0 && countActiveTasks < taskRepo.Length)
+        {
+            ChooseRandomTask();
+        }
 
         //for each task in Active tasks, apply passive effect
 
         //Every n secs there is a m percent of chance a task from taskRepo is added to activeTasks
+    }
+
+    public int FindTaskOfName(Task[] t, string N)
+    {
+        for (int i = 0; i < t.Length; i++)
+        {
+            if (t[i].name == N)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void StepComplete(string newId)
@@ -110,6 +161,7 @@ public class TaskManager : MonoBehaviour
 
     public void TaskComplete(int index)
     {
+        countActiveTasks --;
         Debug.Log("Task finished!");
         if (activeTasks[index].varEndName != null) 
         {
@@ -137,7 +189,12 @@ public class TaskManager : MonoBehaviour
                     case "parrs":
                         stats.ParanoiaRegenSpeed *= activeTasks[index].varEndMod[i];
                         break;
-                        //NEEDS TO BE INCREASED AS STATS ARE ADDED!
+                    case "grav":
+                        if(activeTasks[index].varEndMod[i] == 1)
+                        {
+                            movement.gravity = true;
+                        }
+                    break;
                 }
             }
         }
@@ -155,7 +212,8 @@ public class TaskManager : MonoBehaviour
         {
             taskRepo[randomTask].steps[0] = fireSteps[Random.Range(0, fireSteps.Length)];
         }
-        if (activeTasks[randomTask].name == taskRepo[randomTask].name)
+        //before adding, check if it already exists, or if it's one of those that need to be added under certain condictions
+        if (activeTasks[randomTask].name == taskRepo[randomTask].name || activeTasks[randomTask].name == "Fix Lights" || activeTasks[randomTask].name == "Warm Milk" || activeTasks[randomTask].name == "Make Lunch" || activeTasks[randomTask].name == "Hug Teddy Bear")
         {
             ChooseRandomTask();
         } else
@@ -166,6 +224,7 @@ public class TaskManager : MonoBehaviour
 
     public void TaskAdd(int index)
     {
+        countActiveTasks ++;
         activeTasks[index] = taskRepo[index];
         Debug.Log(activeTasks[index].name + " [" + activeTasks[index].currentStep + " / " + activeTasks[index].steps.Length + "]");
         Debug.Log(activeTasks[index].steps[activeTasks[index].currentStep].name + " [" + activeTasks[index].steps[activeTasks[index].currentStep].location + "]");
@@ -200,6 +259,12 @@ public class TaskManager : MonoBehaviour
                         break;
                     case "parrs":
                         stats.ParanoiaRegenSpeed *= activeTasks[index].varStartMod[i];
+                        break;
+                    case "grav":
+                        if(activeTasks[index].varStartMod[i] == 0)
+                        {
+                            movement.gravity = false;
+                        }
                         break;
                 }
             }
