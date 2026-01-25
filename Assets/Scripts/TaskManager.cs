@@ -4,12 +4,17 @@ using System.Collections;
 public class TaskManager : MonoBehaviour
 {
     public PlayerStats stats;
+
+    [System.Serializable]
     public struct Step
     {
         public string id;
         public string location;
         public string name;
+        //public GameObject sceneObject;
     }
+
+    [System.Serializable]
     public struct Task
     {
         public string name;
@@ -17,99 +22,51 @@ public class TaskManager : MonoBehaviour
         public int currentStep;
         public Step[] steps;
 
+        [Header("Stat Modifiers")]
         public string[] varStartName;
         public float[] varStartMod; //If used on usage/regen speed, it multiplies, if used on total value, it a sum
         public string[] varEndName;
         public float[] varEndMod; // cant be used on speed, because it will permanently change it. Unless its to out it back to default
     }
 
-    public Task[4] taskRepo;
-    public Task[] activeTasks;
-
+    //In the inspector
+    public Task[] taskRepo;
     public Step[] hullSteps;
-
     public Step[] fireSteps;
+
+    // Don't touch in Inspector
+    public Task[] activeTasks;
 
     void Start()
     {
         stats = GetComponent<PlayerStats>();
 
-        activeTasks = new Task[taskRepo.Length];
+        if (taskRepo.Length > 0)
+        {
+            activeTasks = new Task[taskRepo.Length];
+        }
 
-        hullSteps = new Step[3];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
-        hullSteps[0].name = "Mend Hull (Needs Welder)";
-        hullSteps[0].id = "gardenHull";
-        hullSteps[0].location = "Garden";
-        hullSteps[1].name = "Mend Hull (Needs Welder)";
-        hullSteps[1].id = "engineHull";
-        hullSteps[1].location = "Engine Room";
-        hullSteps[2].name = "Mend Hull (Needs Welder)";
-        hullSteps[2].id = "navHull";
-        hullSteps[2].location = "Navigation Room";
+        // foreach (Task t in taskRepo)
+        // {
+        //         foreach (Step s in t.steps)
+        //         {
+        //             if (s.sceneObject != null)
+        //             {
+        //                 s.sceneObject.SetActive(false);
+        //             }
+        //         }
+        // }
 
+        // foreach(Step s in hullSteps)
+        // {
+        //     s.sceneObject.SetActive(false);
+        // }
 
-        taskRepo[0].name = "Broken Radio";
-        taskRepo[0].importance = 0;
-        taskRepo[0].currentStep = 0;
-        taskRepo[0].steps = new Step[1];
-            taskRepo[0].steps[0].id = "radio";
-            taskRepo[0].steps[0].location = "Outside";
-            taskRepo[0].steps[0].name = "Fix antenna (Needs Welder)";
+        // foreach(Step s in fireSteps)
+        // {
+        //     s.sceneObject.SetActive(false);
+        // }
 
-        taskRepo[1].name = "Breach In Hull!";
-        taskRepo[1].importance = 2;
-        taskRepo[1].currentStep = 0;
-        taskRepo[1].steps = new Step[1];
-        taskRepo[1].varStartName = new string[1];
-        taskRepo[1].varStartMod = new float[1];
-            taskRepo[1].varStartName[0] = "o2rs"; //change to ship oxigen usage instead
-            taskRepo[1].varStartMod[0] = 0.5f;
-        taskRepo[1].varEndName = new string[1];
-        taskRepo[1].varEndMod = new float[1];
-            taskRepo[1].varEndName[0] = "o2rs";
-            taskRepo[1].varEndMod[0] = 2f;
-
-        taskRepo[2].name = "Water Plants";
-        taskRepo[2].importance = 1;
-        taskRepo[2].currentStep = 0;
-        taskRepo[2].steps = new Step[3]; //create a hull breach repo, when this task is added, a random one of the breach in hull steps can be added instead
-            taskRepo[2].steps[0].id = "plant1";
-            taskRepo[2].steps[0].location = "Garden";
-            taskRepo[2].steps[0].name = "Water plant1 (Needs Water Can)";
-            taskRepo[2].steps[1].id = "plant2";
-            taskRepo[2].steps[1].location = "Garden";
-            taskRepo[2].steps[1].name = "Water plant2 (Needs Water Can)";
-            taskRepo[2].steps[2].id = "plant3";
-            taskRepo[2].steps[2].location = "Garden";
-            taskRepo[2].steps[2].name = "Water plant3 (Needs Water Can)";
-        taskRepo[2].varStartName = new string[1];
-        taskRepo[2].varStartMod = new float[1];
-            taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
-            taskRepo[2].varStartMod[0] = 0.5f;
-        taskRepo[2].varEndName = new string[1];
-        taskRepo[2].varEndMod = new float[1];
-            taskRepo[2].varEndName[0] = "o2rs";
-            taskRepo[2].varEndMod[0] = 2f;
-
-                // If lights below 0, then task is triggered
-                taskRepo[3].name = "Fix Lights";
-        taskRepo[3].importance = 2;
-        taskRepo[3].currentStep = 0;
-        taskRepo[3].steps = new Step[1]; //create a hull breach repo, when this task is added, a random one of the breach in hull steps can be added instead
-            taskRepo[3].steps[0].id = "lights";
-            taskRepo[3].steps[0].location = "Engine Room";
-            taskRepo[3].steps[0].name = "Reset breakers (fix solar panels first)";
-            // CHANGE LATER
-        // taskRepo[2].varStartName = new string[1];
-        // taskRepo[2].varStartMod = new float[1];
-        //     taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
-        //     taskRepo[2].varStartMod[0] = 0.5f;
-        // taskRepo[2].varEndName = new string[1];
-        // taskRepo[2].varEndMod = new float[1];
-        //     taskRepo[2].varEndName[0] = "o2rs";
-        //     taskRepo[2].varEndMod[0] = 2f;
-
-        ChooseRandomTask();
         ChooseRandomTask();
         ChooseRandomTask();
         ChooseRandomTask();
@@ -135,12 +92,17 @@ public class TaskManager : MonoBehaviour
                     
                     Debug.Log(activeTasks[i].name + " [" + (1 + activeTasks[i].currentStep) + " / " + activeTasks[i].steps.Length + "]");
                     Debug.Log(activeTasks[i].steps[activeTasks[i].currentStep].name + " [" + activeTasks[i].steps[activeTasks[i].currentStep].location + "]");
+                    // activeTasks[i].steps[activeTasks[i].currentStep].sceneObject.SetActive(false);
                     activeTasks[i].currentStep++;
                 }
 
                 if (activeTasks[i].currentStep >= activeTasks[i].steps.Length)
                 {
                     TaskComplete(i);
+                }
+                else
+                {
+                    // activeTasks[i].steps[activeTasks[i].currentStep].sceneObject.SetActive(true);
                 }
             }
         }
@@ -189,6 +151,10 @@ public class TaskManager : MonoBehaviour
         {
             taskRepo[randomTask].steps[0] = hullSteps[Random.Range(0, hullSteps.Length)]; //Add cses for Fire and any other that has random placement
         }
+        else if (taskRepo[randomTask].name == "Extinguish Fire")
+        {
+            taskRepo[randomTask].steps[0] = fireSteps[Random.Range(0, fireSteps.Length)];
+        }
         if (activeTasks[randomTask].name == taskRepo[randomTask].name)
         {
             ChooseRandomTask();
@@ -203,6 +169,12 @@ public class TaskManager : MonoBehaviour
         activeTasks[index] = taskRepo[index];
         Debug.Log(activeTasks[index].name + " [" + activeTasks[index].currentStep + " / " + activeTasks[index].steps.Length + "]");
         Debug.Log(activeTasks[index].steps[activeTasks[index].currentStep].name + " [" + activeTasks[index].steps[activeTasks[index].currentStep].location + "]");
+
+        // int current = activeTasks[index].currentStep;
+        // if (activeTasks[index].steps[current].sceneObject != null)
+        // {
+        // activeTasks[index].steps[current].sceneObject.SetActive(true);
+        // }
 
         if (activeTasks[index].varStartName != null) 
         {
