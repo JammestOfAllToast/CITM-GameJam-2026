@@ -21,6 +21,11 @@ public bool HasWon;
 [Header("OtherScripts")]
 public TimeController TC;
 [SerializeField] TextMeshProUGUI Wintext;
+[Header("Ship Stats")]
+public float Fuel;
+public float FuelUsage;
+public bool HasElectricity;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +38,16 @@ public TimeController TC;
     void Update()
     {
         if(!IsDead && TC.CurrentTime < TC.EndHour * 60f){
+            if (HasElectricity)
+            {
+                Fuel -= FuelUsage * Time.deltaTime;
+                if(Fuel < 0f)
+                {
+                    Fuel = 0f;
+                    HasElectricity = false;
+                    IsThereOxygenAround = false;
+                }
+            }
             
             if(Paranoia > 100f && OxygenUsageSpeed < OxygenUsageSpeedHardLimit)
             {
