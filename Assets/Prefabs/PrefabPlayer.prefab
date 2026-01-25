@@ -994,98 +994,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   stats: {fileID: 0}
-  taskRepo:
-  - name: Broken Radio
-    importance: 0
-    currentStep: 0
-    steps:
-    - id: radio
-      location: Outside
-      name: Fix antenna (Needs Welder)
-    varStartName: []
-    varStartMod: []
-    varEndName: []
-    varEndMod: []
-  - name: Breach In Hull!
-    importance: 2
-    currentStep: 0
-    steps:
-    - id: 
-      location: 
-      name: 
-    varStartName:
-    - o2rs
-    varStartMod:
-    - 0.5
-    varEndName:
-    - o2rs
-    varEndMod:
-    - 2
-  - name: Water Plants
-    importance: 1
-    currentStep: 0
-    steps:
-    - id: plant1
-      location: Garden
-      name: Water plant1 (Needs Water Can)
-    - id: plant2
-      location: Garden
-      name: Water plant2 (Needs Water Can)
-    - id: plant3
-      location: Garden
-      name: Water plant3 (Needs Water Can)
-    varStartName:
-    - o2rs
-    varStartMod:
-    - 0.5
-    varEndName:
-    - o2rs
-    varEndMod:
-    - 2
-  - name: Fix Lights
-    importance: 2
-    currentStep: 0
-    steps:
-    - id: lights
-      location: Engine Room
-      name: Reset breakers (fix solar panels first)
-    varStartName: []
-    varStartMod: []
-    varEndName: []
-    varEndMod: []
-  - name: Extinguish Fire
-    importance: 2
-    currentStep: 0
-    steps:
-    - id: 
-      location: 
-      name: 
-    varStartName:
-    - o2rs
-    varStartMod:
-    - 0.5
-    varEndName:
-    - 02rs
-    varEndMod:
-    - 2
-  hullSteps:
-  - id: gardenHull
-    location: Garden
-    name: Mend Hull (Needs Welder)
-  - id: engineHull
-    location: Engine Room
-    name: Mend Hull (Needs Welder)
-  - id: navHull
-    location: Navigation Room
-    name: Mend Hull (Needs Welder)
-  fireSteps:
-  - id: machineFire
-    location: Machine Room
-    name: Extinguish Fire (Needs Extinguisher)
-  - id: cryoFire
-    location: Cryostasis Chamber
-    name: Extinguish Fire (Needs Extinguisher)
-  activeTasks: []
+  gManager: {fileID: 0}
+  timeController: {fileID: 0}
+  movement: {fileID: 0}
+  minTimeToTask: 10
+  maxTimeToTask: 15
+  DEWIT: 0
 --- !u!1 &7328052698429604177
 GameObject:
   m_ObjectHideFlags: 0

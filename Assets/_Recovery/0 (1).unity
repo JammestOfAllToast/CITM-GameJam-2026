@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Repair
   stepId: gardenHull
-  destroyTool: 0
   requirement: Welder
   time: 5
   ogMSG: 
@@ -694,7 +693,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Water Plant
   stepId: plant2
-  destroyTool: 0
   requirement: 
   time: 2
   ogMSG: 
@@ -923,7 +921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Water Plants
   stepId: plant1
-  destroyTool: 1
   requirement: Water
   time: 2
   ogMSG: 
@@ -1923,7 +1920,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Repair
   stepId: engineHull
-  destroyTool: 0
   requirement: Welder
   time: 5
   ogMSG: 
@@ -2193,7 +2189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Hold E to fix
   stepId: radio
-  destroyTool: 0
   requirement: Welder
   time: 10
   ogMSG: 
@@ -2658,7 +2653,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
   objectInteractMessage: Extinguish Fire (needs extinguisher)
   stepId: cryoFire
-  destroyTool: 0
   requirement: Extinguisher
   time: 5
   ogMSG: 
@@ -2977,7 +2971,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
   objectInteractMessage: Extinguish Fire (needs extinguisher)
   stepId: machineFire
-  destroyTool: 0
   requirement: Extinguisher
   time: 5
   ogMSG: 
@@ -3225,8 +3218,6 @@ MonoBehaviour:
   movement: {fileID: 0}
   minTimeToTask: 2
   maxTimeToTask: 3
-  DEWIT: 0
-  taskChanged: 0
 --- !u!1 &1947509447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,7 +3341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
   objectInteractMessage: Fix Lights mfer
   stepId: lights
-  destroyTool: 0
   requirement: 
   time: 0
   ogMSG: 
@@ -3485,7 +3475,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Repair
   stepId: navHull
-  destroyTool: 0
   requirement: Welder
   time: 5
   ogMSG: 
@@ -3649,7 +3638,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Water Plant
   stepId: plant3
-  destroyTool: 0
   requirement: 
   time: 2
   ogMSG: 

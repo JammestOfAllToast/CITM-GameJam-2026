@@ -12,7 +12,7 @@ public class TaskManager : MonoBehaviour
     public int maxTimeToTask;
 
     
-
+    public bool DEWIT;
 
     public struct Step
     {
@@ -45,6 +45,7 @@ public class TaskManager : MonoBehaviour
 
     // Don't touch in Inspector
     public Task[] activeTasks;
+
 
     private int countActiveTasks = 0;
     private float taskTimer = 0;
@@ -194,7 +195,7 @@ public class TaskManager : MonoBehaviour
 
         if (gManager != null)
         {
-            for (int i = 0; i < gManager.stage + 4; i++)
+            for (int i = 0; i < gManager.stage + 2; i++)
             {
                 ChooseRandomTask();
             }
@@ -219,7 +220,7 @@ public class TaskManager : MonoBehaviour
         {
             if (countActiveTasks < taskRepo.Length-1) //this one is because of Electrical, will need to be increeased when other non-randomly chosen tasks are implemented
             {
-               // ChooseRandomTask();
+                ChooseRandomTask();
             }
             taskTimer = 0f;
         }
@@ -227,6 +228,12 @@ public class TaskManager : MonoBehaviour
         //for each task in Active tasks, apply passive effect
 
         //Every n secs there is a m percent of chance a task from taskRepo is added to activeTasks
+
+        if (DEWIT)
+        {
+            ChooseRandomTask();
+            DEWIT = false;
+        }
     }
 
     public int FindTaskOfName(Task[] t, string N)
@@ -318,14 +325,6 @@ public class TaskManager : MonoBehaviour
     public void ChooseRandomTask()
     {
         int randomTask = Random.Range(0, taskRepo.Length);
-        if (taskRepo[randomTask].name == "Breach In Hull!")
-        {
-            taskRepo[randomTask].steps[0] = hullSteps[Random.Range(0, hullSteps.Length)]; //Add cses for Fire and any other that has random placement
-        }
-        else if (taskRepo[randomTask].name == "Extinguish Fire")
-        {
-            taskRepo[randomTask].steps[0] = fireSteps[Random.Range(0, fireSteps.Length)];
-        }
         //before adding, check if it already exists, or if it's one of those that need to be added under certain condictions
         if (activeTasks[randomTask].name == taskRepo[randomTask].name || IsNotChoosable(randomTask))
         {
@@ -333,7 +332,6 @@ public class TaskManager : MonoBehaviour
         } else
         {
             Debug.Log("This is randomly chosen: " + taskRepo[randomTask].name);
-           // if (activeTasks[randomTask].name == "Fix Lights") {}
             TaskAdd(randomTask);
             countActiveTasks ++; //Bear thee in mind, that this here variable does not count as parte of alle active tasques. The above outline shall not be counted here after to avoid a Stacke Overflowe
         }
@@ -351,7 +349,16 @@ public class TaskManager : MonoBehaviour
 
     public void TaskAdd(int index)
     {
-        activeTasks[index] = taskRepo[index];
+        Task T = taskRepo[index];
+        if (T.name == "Breach In Hull!")
+        {
+            T.steps[0] = hullSteps[Random.Range(0, hullSteps.Length)]; //Add cses for Fire and any other that has random placement
+        }
+        else if (T.name == "Extinguish Fire")
+        {
+            T.steps[0] = fireSteps[Random.Range(0, fireSteps.Length)];
+        }
+        activeTasks[index] = T;
         Debug.Log(activeTasks[index].name + " [" + activeTasks[index].currentStep + " / " + activeTasks[index].steps.Length + "]");
         Debug.Log(activeTasks[index].steps[activeTasks[index].currentStep].name + " [" + activeTasks[index].steps[activeTasks[index].currentStep].location + "]");
 
@@ -394,9 +401,8 @@ public class TaskManager : MonoBehaviour
                         break;
                 }
             }
-        } 
+        }
     }
-
 }
 
 
