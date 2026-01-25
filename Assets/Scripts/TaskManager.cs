@@ -13,7 +13,7 @@ public class TaskManager : MonoBehaviour
 
     
 
-    [System.Serializable]
+
     public struct Step
     {
         public string id;
@@ -22,7 +22,7 @@ public class TaskManager : MonoBehaviour
         //public GameObject sceneObject;
     }
 
-    [System.Serializable]
+
     public struct Task
     {
         public string name;
@@ -55,11 +55,114 @@ public class TaskManager : MonoBehaviour
         timeController = GameObject.FindWithTag("TimeWizard").GetComponent<TimeController>();
         movement = GetComponent<PlayerMovement>();
 
+         taskRepo = new Task[5];
+        activeTasks = new Task[taskRepo.Length];
 
-        if (taskRepo.Length > 0)
-        {
-            activeTasks = new Task[taskRepo.Length];
-        }
+
+        hullSteps = new Step[3];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
+        hullSteps[0].name = "Mend Hull (Needs Welder)";
+        hullSteps[0].id = "gardenHull";
+        hullSteps[0].location = "Garden";
+        hullSteps[1].name = "Mend Hull (Needs Welder)";
+        hullSteps[1].id = "engineHull";
+        hullSteps[1].location = "Engine Room";
+        hullSteps[2].name = "Mend Hull (Needs Welder)";
+        hullSteps[2].id = "navHull";
+        hullSteps[2].location = "Navigation Room";
+
+
+
+
+        taskRepo[0].name = "Broken Radio";
+        taskRepo[0].importance = 0;
+        taskRepo[0].currentStep = 0;
+        taskRepo[0].steps = new Step[1];
+            taskRepo[0].steps[0].id = "radio";
+            taskRepo[0].steps[0].location = "Outside";
+            taskRepo[0].steps[0].name = "Fix antenna (Needs Welder)";
+
+
+        taskRepo[1].name = "Breach In Hull!";
+        taskRepo[1].importance = 2;
+        taskRepo[1].currentStep = 0;
+        taskRepo[1].steps = new Step[1];
+        taskRepo[1].varStartName = new string[1];
+        taskRepo[1].varStartMod = new float[1];
+      taskRepo[1].varStartName[0] = "o2rs"; //change to ship oxigen usage instead
+            taskRepo[1].varStartMod[0] = 0.5f;
+        taskRepo[1].varEndName = new string[1];
+        taskRepo[1].varEndMod = new float[1];
+            taskRepo[1].varEndName[0] = "o2rs";
+            taskRepo[1].varEndMod[0] = 2f;
+
+
+        taskRepo[2].name = "Water Plants";
+        taskRepo[2].importance = 1;
+        taskRepo[2].currentStep = 0;
+        taskRepo[2].steps = new Step[3]; //create a hull breach repo, when this task is added, a random one of the breach in hull steps can be added instead
+            taskRepo[2].steps[0].id = "plant1";
+            taskRepo[2].steps[0].location = "Garden";
+            taskRepo[2].steps[0].name = "Water plant1 (Needs Water Can)";
+            taskRepo[2].steps[1].id = "plant2";
+            taskRepo[2].steps[1].location = "Garden";
+            taskRepo[2].steps[1].name = "Water plant2 (Needs Water Can)";
+            taskRepo[2].steps[2].id = "plant3";
+            taskRepo[2].steps[2].location = "Garden";
+            taskRepo[2].steps[2].name = "Water plant3 (Needs Water Can)";
+        taskRepo[2].varStartName = new string[1];
+        taskRepo[2].varStartMod = new float[1];
+            taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+            taskRepo[2].varStartMod[0] = 0.5f;
+        taskRepo[2].varEndName = new string[1];
+        taskRepo[2].varEndMod = new float[1];
+            taskRepo[2].varEndName[0] = "o2rs";
+            taskRepo[2].varEndMod[0] = 2f;
+
+
+        // If lights below 0, then task is triggered
+        taskRepo[3].name = "Fix Lights";
+        taskRepo[3].importance = 2;
+        taskRepo[3].currentStep = 0;
+        taskRepo[3].steps = new Step[1];
+            taskRepo[3].steps[0].id = "lights";
+            taskRepo[3].steps[0].location = "Engine Room";
+            taskRepo[3].steps[0].name = "Reset breakers (fix solar panels first)";
+            // CHANGE LATER
+        // taskRepo[2].varStartName = new string[1];
+        // taskRepo[2].varStartMod = new float[1];
+        //     taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+        //     taskRepo[2].varStartMod[0] = 0.5f;
+        // taskRepo[2].varEndName = new string[1];
+        // taskRepo[2].varEndMod = new float[1];
+        //     taskRepo[2].varEndName[0] = "o2rs";
+        //     taskRepo[2].varEndMod[0] = 2f;
+
+
+        fireSteps = new Step[2];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
+        fireSteps[0].name = "Extinguish fire (Needs extinguisher)";
+        fireSteps[0].id = "machineFire";
+        fireSteps[0].location = "Machine Room";
+        fireSteps[1].name = "Extinguish fire (Needs extinguisher)";
+        fireSteps[1].id = "cryoFire";
+        fireSteps[1].location = "Cryostasis Chamber";
+       
+        taskRepo[4].name = "Extinguish Fire";
+        taskRepo[4].importance = 2;
+        taskRepo[4].currentStep = 0;
+        taskRepo[4].steps = new Step[1];
+        taskRepo[4].varStartName = new string[1];
+        taskRepo[4].varStartMod = new float[1];
+            taskRepo[4].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+            taskRepo[4].varStartMod[0] = 0.5f;
+        taskRepo[4].varEndName = new string[1];
+        taskRepo[4].varEndMod = new float[1];
+            taskRepo[4].varEndName[0] = "o2rs";
+            taskRepo[4].varEndMod[0] = 2f;
+        
+        //if (taskRepo.Length > 0)
+        //{
+         //   activeTasks = new Task[taskRepo.Length];
+        //}
 
         // foreach (Task t in taskRepo)
         // {
