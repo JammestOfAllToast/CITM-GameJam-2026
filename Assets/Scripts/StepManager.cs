@@ -80,20 +80,35 @@ public class StepManager : MonoBehaviour, IInteractable
         return -1;
     }
 
-    public void Hide()
+   public void Hide()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        if (GetComponent<MeshRenderer>() != null)
+        {
+            GetComponent<MeshRenderer>().enabled = false;
+        }
+        if (GetComponent<Collider>() != null)
+        {
+            GetComponent<Collider>().enabled = false;
+        }  
+
         objectInteractMessage = string.Empty;
         hidden = true;
     }
 
     public void Show()
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        if (GetComponent<MeshRenderer>() != null)
+        {
+            GetComponent<MeshRenderer>().enabled = true;
+        }
+        if (GetComponent<Collider>() != null)
+        {
+            GetComponent<Collider>().enabled = true;
+        }    
+
         if (objectInteractMessage == string.Empty) { objectInteractMessage = ogMSG; }
         hidden = false;
-    }
-
+    }   
     public void Interact()
     {
         if (!hidden) {
