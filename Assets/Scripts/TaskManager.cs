@@ -8,8 +8,8 @@ public class TaskManager : MonoBehaviour
     public TimeController timeController;
     public PlayerMovement movement;
 
-    public float minTimeToTask;
-    public float maxTimeToTask;
+    public int minTimeToTask;
+    public int maxTimeToTask;
 
     
 
@@ -47,6 +47,7 @@ public class TaskManager : MonoBehaviour
     public Task[] activeTasks;
 
     private int countActiveTasks = 0;
+    private float taskTimer = 0;
 
     void Start()
     {
@@ -193,7 +194,7 @@ public class TaskManager : MonoBehaviour
 
         if (gManager != null)
         {
-            for (int i = 0; i < gManager.stage + 2; i++)
+            for (int i = 0; i < gManager.stage + 4; i++)
             {
                 ChooseRandomTask();
             }
@@ -213,10 +214,14 @@ public class TaskManager : MonoBehaviour
                 }
             }
         }
-
-        if (timeController.CurrentTime % Random.Range(minTimeToTask, maxTimeToTask) == 0 && countActiveTasks < taskRepo.Length)
+        taskTimer += Time.deltaTime;
+        if (taskTimer >= Random.Range(minTimeToTask, maxTimeToTask))
         {
-            ChooseRandomTask();
+            if (countActiveTasks < taskRepo.Length-1) //this one is because of Electrical, will need to be increeased when other non-randomly chosen tasks are implemented
+            {
+               // ChooseRandomTask();
+            }
+            taskTimer = 0f;
         }
 
         //for each task in Active tasks, apply passive effect
@@ -226,11 +231,14 @@ public class TaskManager : MonoBehaviour
 
     public int FindTaskOfName(Task[] t, string N)
     {
-        for (int i = 0; i < t.Length; i++)
+        if (t != null)
         {
-            if (t[i].name == N)
+            for (int i = 0; i < t.Length; i++)
             {
-                return i;
+                if (t[i].name == N)
+                {
+                    return i;
+                }
             }
         }
         return -1;
@@ -264,7 +272,10 @@ public class TaskManager : MonoBehaviour
 
     public void TaskComplete(int index)
     {
-        countActiveTasks --;
+        if (!IsNotChoosable(index))
+        {
+            countActiveTasks --;
+        }
         Debug.Log("Task finished!");
         if (activeTasks[index].varEndName != null) 
         {
@@ -316,18 +327,30 @@ public class TaskManager : MonoBehaviour
             taskRepo[randomTask].steps[0] = fireSteps[Random.Range(0, fireSteps.Length)];
         }
         //before adding, check if it already exists, or if it's one of those that need to be added under certain condictions
-        if (activeTasks[randomTask].name == taskRepo[randomTask].name || activeTasks[randomTask].name == "Fix Lights" || activeTasks[randomTask].name == "Warm Milk" || activeTasks[randomTask].name == "Make Lunch" || activeTasks[randomTask].name == "Hug Teddy Bear")
+        if (activeTasks[randomTask].name == taskRepo[randomTask].name || IsNotChoosable(randomTask))
         {
             ChooseRandomTask();
         } else
         {
+            Debug.Log("This is randomly chosen: " + taskRepo[randomTask].name);
+           // if (activeTasks[randomTask].name == "Fix Lights") {}
             TaskAdd(randomTask);
+            countActiveTasks ++; //Bear thee in mind, that this here variable does not count as parte of alle active tasques. The above outline shall not be counted here after to avoid a Stacke Overflowe
         }
     }
 
+    public bool IsNotChoosable(int i)
+    {
+        if (taskRepo[i].name == "Fix Lights" || taskRepo[i].name == "Warm Milk" || taskRepo[i].name == "Make Lunch" || taskRepo[i].name == "Hug Teddy Bear")
+        {
+            return true;
+        }
+        return false;
+    }
+
+
     public void TaskAdd(int index)
     {
-        countActiveTasks ++;
         activeTasks[index] = taskRepo[index];
         Debug.Log(activeTasks[index].name + " [" + activeTasks[index].currentStep + " / " + activeTasks[index].steps.Length + "]");
         Debug.Log(activeTasks[index].steps[activeTasks[index].currentStep].name + " [" + activeTasks[index].steps[activeTasks[index].currentStep].location + "]");

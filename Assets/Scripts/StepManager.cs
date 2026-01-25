@@ -13,18 +13,26 @@ public class StepManager : MonoBehaviour, IInteractable
     public string requirement;
     public float time = 0;
     public string ogMSG;
-
-    public bool hidden;
+        public bool hidden;
 
     public float waitTime;
     private bool timerStarted = false;
 
+    private float ogWT;
+    private float ogT;
+    private bool hasSounded;
+
     private int taskIndex;
 
     private TaskManager taskManager;
+    private AudioSource audioSource;
+    public AudioClip sound;
     void Start()
     {
+        ogWT = waitTime;
+        ogT = time;
         taskManager = GameObject.FindWithTag("Player").GetComponent<TaskManager>();
+        audioSource = GetComponent<AudioSource>();
         ogMSG = objectInteractMessage;
         StartCoroutine(Initialize());
     }
@@ -50,7 +58,10 @@ public class StepManager : MonoBehaviour, IInteractable
                 Hide();
             } else
             {
-                Show();
+                if (hidden)
+                {
+                    Show();
+                }
             }
         }
         if (timerStarted)
@@ -58,8 +69,13 @@ public class StepManager : MonoBehaviour, IInteractable
             if (waitTime <= 0) {
                 taskManager.StepComplete(stepId); 
                 objectInteractMessage = "Step Complete";
+                if (audioSource != null && !hasSounded)
+                {
+                    audioSource.PlayOneShot(sound, 1f);
+                    hasSounded = true;
+                }
             }
-            waitTime -= Time.deltaTime;
+            if (waitTime > -1) {waitTime -= Time.deltaTime;}
             if (!hidden) {objectInteractMessage = "Please wait " + waitTime.ToString("F1") + " seconds";}
         }
 
@@ -106,8 +122,11 @@ public class StepManager : MonoBehaviour, IInteractable
             GetComponent<Collider>().enabled = true;
         }    
 
-        if (objectInteractMessage == string.Empty) { objectInteractMessage = ogMSG; }
+        objectInteractMessage = ogMSG;
         hidden = false;
+        waitTime = ogWT;
+        time = ogT;
+        hasSounded = false;
     }   
     public void Interact()
     {

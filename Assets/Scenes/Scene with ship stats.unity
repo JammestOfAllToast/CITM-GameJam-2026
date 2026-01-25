@@ -158,6 +158,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!65 &324264635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -697,6 +698,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!65 &769632406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -838,6 +840,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &846855105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846855107}
+  - component: {fileID: 846855106}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &846855106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846855105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5da64e75b4302a9846607474b735bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  isInside: 0
+  stage: 0
+--- !u!4 &846855107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846855105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.09426, y: 0.5, z: -14.96138}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &869112375
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +899,7 @@ GameObject:
   - component: {fileID: 869112378}
   - component: {fileID: 869112377}
   - component: {fileID: 869112376}
+  - component: {fileID: 869112381}
   m_Layer: 0
   m_Name: step_plant1
   m_TagString: Untagged
@@ -877,6 +926,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 8300000, guid: d0e0507f90d205b42978719324fd423f, type: 3}
 --- !u!65 &869112377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -969,6 +1019,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &869112381
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869112375}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: d0e0507f90d205b42978719324fd423f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &877559470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,6 +1925,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!65 &1363935559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2046,6 +2194,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!65 &1520778401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2509,6 +2658,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!135 &1813759375
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2646,7 +2796,7 @@ GameObject:
   - component: {fileID: 1873290522}
   m_Layer: 5
   m_Name: Placeholder Time text
-  m_TagString: Untagged
+  m_TagString: TimeWizard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2826,6 +2976,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!135 &1874065769
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3033,7 +3184,7 @@ MonoBehaviour:
   Wintext: {fileID: 1073960574}
   Fuel: 0
   FuelUsage: 0
-  HasElectricity: 0
+  HasElectricity: 1
 --- !u!114 &1902762672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3062,94 +3213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   stats: {fileID: 0}
+  gManager: {fileID: 0}
+  timeController: {fileID: 0}
   movement: {fileID: 0}
-  taskRepo:
-  - name: Broken Radio
-    importance: 0
-    currentStep: 0
-    steps:
-    - id: radio
-      location: Outside
-      name: Fix antenna (Needs Welder)
-    varStartName: []
-    varStartMod: []
-    varEndName: []
-    varEndMod: []
-  - name: Breach In Hull!
-    importance: 2
-    currentStep: 0
-    steps:
-    - id: 
-      location: 
-      name: 
-    varStartName:
-    - o2rs
-    varStartMod:
-    - 0.5
-    varEndName:
-    - o2rs
-    varEndMod:
-    - 2
-  - name: Water Plants
-    importance: 1
-    currentStep: 0
-    steps:
-    - id: plant1
-      location: Garden
-      name: Water plant1 (Needs Water Can)
-    - id: plant2
-      location: Garden
-      name: Water plant2 (Needs Water Can)
-    - id: plant3
-      location: Garden
-      name: Water plant3 (Needs Water Can)
-    varStartName:
-    - o2rs
-    varStartMod:
-    - 0.5
-    varEndName:
-    - o2rs
-    varEndMod:
-    - 2
-  - name: Fix Lights
-    importance: 2
-    currentStep: 0
-    steps:
-    - id: lights
-      location: Engine Room
-      name: Reset breakers (fix solar panels first)
-    varStartName:
-    - grav
-    varStartMod:
-    - 0
-    varEndName:
-    - grav
-    varEndMod:
-    - 1
-  - name: Extinguish Fire
-    importance: 2
-    currentStep: 0
-    steps:
-    - id: 
-      location: 
-      name: 
-    varStartName:
-    - o2rs
-    varStartMod:
-    - 0.5
-    varEndName:
-    - 02rs
-    varEndMod:
-    - 2
-  hullSteps: []
-  fireSteps:
-  - id: machineFire
-    location: Machine Room
-    name: Extinguish Fire (Needs Extinguisher)
-  - id: cryoFire
-    location: Cryostasis Chamber
-    name: Extinguish Fire (Needs Extinguisher)
-  activeTasks: []
+  minTimeToTask: 2
+  maxTimeToTask: 3
 --- !u!1 &1947509447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,6 +3346,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 1
+  sound: {fileID: 0}
 --- !u!136 &1968151590
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3411,6 +3480,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!65 &2035488083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3573,6 +3643,7 @@ MonoBehaviour:
   ogMSG: 
   hidden: 0
   waitTime: 0
+  sound: {fileID: 0}
 --- !u!65 &2068851058
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3689,3 +3760,4 @@ SceneRoots:
   - {fileID: 1093132302}
   - {fileID: 1874065772}
   - {fileID: 1813759378}
+  - {fileID: 846855107}

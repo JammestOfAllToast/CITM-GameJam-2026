@@ -17,14 +17,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isInside)
-        {
-            interior.SetActive(true);
-            exterior.SetActive(false);
-        } else
-        {
-            interior.SetActive(false);
-            exterior.SetActive(true);
+        if (interior != null && interior != null) {
+            if (isInside)
+            {
+                interior.SetActive(true);
+                exterior.SetActive(false);
+            } else
+            {
+                interior.SetActive(false);
+                exterior.SetActive(true);
+            }
         }
     }
 
