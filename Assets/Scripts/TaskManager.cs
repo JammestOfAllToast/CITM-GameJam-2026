@@ -4,8 +4,16 @@ using System.Collections;
 public class TaskManager : MonoBehaviour
 {
     public PlayerStats stats;
+    public GameManager gManager;
+    public TimeController timeController;
+    public PlayerMovement movement;
 
-    [System.Serializable]
+    public float minTimeToTask;
+    public float maxTimeToTask;
+
+    
+
+
     public struct Step
     {
         public string id;
@@ -14,7 +22,7 @@ public class TaskManager : MonoBehaviour
         //public GameObject sceneObject;
     }
 
-    [System.Serializable]
+
     public struct Task
     {
         public string name;
@@ -33,18 +41,128 @@ public class TaskManager : MonoBehaviour
     public Task[] taskRepo;
     public Step[] hullSteps;
     public Step[] fireSteps;
+    
 
     // Don't touch in Inspector
     public Task[] activeTasks;
 
+    private int countActiveTasks = 0;
+
     void Start()
     {
         stats = GetComponent<PlayerStats>();
+        gManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        timeController = GameObject.FindWithTag("TimeWizard").GetComponent<TimeController>();
+        movement = GetComponent<PlayerMovement>();
 
-        if (taskRepo.Length > 0)
-        {
-            activeTasks = new Task[taskRepo.Length];
-        }
+         taskRepo = new Task[5];
+        activeTasks = new Task[taskRepo.Length];
+
+
+        hullSteps = new Step[3];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
+        hullSteps[0].name = "Mend Hull (Needs Welder)";
+        hullSteps[0].id = "gardenHull";
+        hullSteps[0].location = "Garden";
+        hullSteps[1].name = "Mend Hull (Needs Welder)";
+        hullSteps[1].id = "engineHull";
+        hullSteps[1].location = "Engine Room";
+        hullSteps[2].name = "Mend Hull (Needs Welder)";
+        hullSteps[2].id = "navHull";
+        hullSteps[2].location = "Navigation Room";
+
+
+
+
+        taskRepo[0].name = "Broken Radio";
+        taskRepo[0].importance = 0;
+        taskRepo[0].currentStep = 0;
+        taskRepo[0].steps = new Step[1];
+            taskRepo[0].steps[0].id = "radio";
+            taskRepo[0].steps[0].location = "Outside";
+            taskRepo[0].steps[0].name = "Fix antenna (Needs Welder)";
+
+
+        taskRepo[1].name = "Breach In Hull!";
+        taskRepo[1].importance = 2;
+        taskRepo[1].currentStep = 0;
+        taskRepo[1].steps = new Step[1];
+        taskRepo[1].varStartName = new string[1];
+        taskRepo[1].varStartMod = new float[1];
+      taskRepo[1].varStartName[0] = "o2rs"; //change to ship oxigen usage instead
+            taskRepo[1].varStartMod[0] = 0.5f;
+        taskRepo[1].varEndName = new string[1];
+        taskRepo[1].varEndMod = new float[1];
+            taskRepo[1].varEndName[0] = "o2rs";
+            taskRepo[1].varEndMod[0] = 2f;
+
+
+        taskRepo[2].name = "Water Plants";
+        taskRepo[2].importance = 1;
+        taskRepo[2].currentStep = 0;
+        taskRepo[2].steps = new Step[3]; //create a hull breach repo, when this task is added, a random one of the breach in hull steps can be added instead
+            taskRepo[2].steps[0].id = "plant1";
+            taskRepo[2].steps[0].location = "Garden";
+            taskRepo[2].steps[0].name = "Water plant1 (Needs Water Can)";
+            taskRepo[2].steps[1].id = "plant2";
+            taskRepo[2].steps[1].location = "Garden";
+            taskRepo[2].steps[1].name = "Water plant2 (Needs Water Can)";
+            taskRepo[2].steps[2].id = "plant3";
+            taskRepo[2].steps[2].location = "Garden";
+            taskRepo[2].steps[2].name = "Water plant3 (Needs Water Can)";
+        taskRepo[2].varStartName = new string[1];
+        taskRepo[2].varStartMod = new float[1];
+            taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+            taskRepo[2].varStartMod[0] = 0.5f;
+        taskRepo[2].varEndName = new string[1];
+        taskRepo[2].varEndMod = new float[1];
+            taskRepo[2].varEndName[0] = "o2rs";
+            taskRepo[2].varEndMod[0] = 2f;
+
+
+        // If lights below 0, then task is triggered
+        taskRepo[3].name = "Fix Lights";
+        taskRepo[3].importance = 2;
+        taskRepo[3].currentStep = 0;
+        taskRepo[3].steps = new Step[1];
+            taskRepo[3].steps[0].id = "lights";
+            taskRepo[3].steps[0].location = "Engine Room";
+            taskRepo[3].steps[0].name = "Reset breakers (fix solar panels first)";
+            // CHANGE LATER
+        // taskRepo[2].varStartName = new string[1];
+        // taskRepo[2].varStartMod = new float[1];
+        //     taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+        //     taskRepo[2].varStartMod[0] = 0.5f;
+        // taskRepo[2].varEndName = new string[1];
+        // taskRepo[2].varEndMod = new float[1];
+        //     taskRepo[2].varEndName[0] = "o2rs";
+        //     taskRepo[2].varEndMod[0] = 2f;
+
+
+        fireSteps = new Step[2];                        //for tasks that can happen in various places, have multiple steps that can be added randomly.
+        fireSteps[0].name = "Extinguish fire (Needs extinguisher)";
+        fireSteps[0].id = "machineFire";
+        fireSteps[0].location = "Machine Room";
+        fireSteps[1].name = "Extinguish fire (Needs extinguisher)";
+        fireSteps[1].id = "cryoFire";
+        fireSteps[1].location = "Cryostasis Chamber";
+       
+        taskRepo[4].name = "Extinguish Fire";
+        taskRepo[4].importance = 2;
+        taskRepo[4].currentStep = 0;
+        taskRepo[4].steps = new Step[1];
+        taskRepo[4].varStartName = new string[1];
+        taskRepo[4].varStartMod = new float[1];
+            taskRepo[4].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
+            taskRepo[4].varStartMod[0] = 0.5f;
+        taskRepo[4].varEndName = new string[1];
+        taskRepo[4].varEndMod = new float[1];
+            taskRepo[4].varEndName[0] = "o2rs";
+            taskRepo[4].varEndMod[0] = 2f;
+        
+        //if (taskRepo.Length > 0)
+        //{
+         //   activeTasks = new Task[taskRepo.Length];
+        //}
 
         // foreach (Task t in taskRepo)
         // {
@@ -66,20 +184,56 @@ public class TaskManager : MonoBehaviour
         // {
         //     s.sceneObject.SetActive(false);
         // }
+        if (FindTaskOfName(taskRepo, "Warm Milk") != -1 && FindTaskOfName(taskRepo, "Hug Teddy bear") != -1 && FindTaskOfName(taskRepo, "Make Food") == -1) 
+        {
+            TaskAdd(FindTaskOfName(taskRepo, "Warm Milk"));
+            TaskAdd(FindTaskOfName(taskRepo, "Hug Teddy bear"));
+            TaskAdd(FindTaskOfName(taskRepo, "Make Food"));
+        }
 
-        ChooseRandomTask();
-        ChooseRandomTask();
-        ChooseRandomTask();
+        if (gManager != null)
+        {
+            for (int i = 0; i < gManager.stage + 2; i++)
+            {
+                ChooseRandomTask();
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (stats != null)
+        {
+            if (!stats.HasElectricity)
+            {
+                if (FindTaskOfName(activeTasks, "Fix Lights") == -1)
+                {
+                    TaskAdd(FindTaskOfName(taskRepo, "Fix Lights"));
+                }
+            }
+        }
+
+        if (timeController.CurrentTime % Random.Range(minTimeToTask, maxTimeToTask) == 0 && countActiveTasks < taskRepo.Length)
+        {
+            ChooseRandomTask();
+        }
 
         //for each task in Active tasks, apply passive effect
 
         //Every n secs there is a m percent of chance a task from taskRepo is added to activeTasks
+    }
+
+    public int FindTaskOfName(Task[] t, string N)
+    {
+        for (int i = 0; i < t.Length; i++)
+        {
+            if (t[i].name == N)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void StepComplete(string newId)
@@ -110,6 +264,7 @@ public class TaskManager : MonoBehaviour
 
     public void TaskComplete(int index)
     {
+        countActiveTasks --;
         Debug.Log("Task finished!");
         if (activeTasks[index].varEndName != null) 
         {
@@ -137,7 +292,12 @@ public class TaskManager : MonoBehaviour
                     case "parrs":
                         stats.ParanoiaRegenSpeed *= activeTasks[index].varEndMod[i];
                         break;
-                        //NEEDS TO BE INCREASED AS STATS ARE ADDED!
+                    case "grav":
+                        if(activeTasks[index].varEndMod[i] == 1)
+                        {
+                            movement.gravity = true;
+                        }
+                    break;
                 }
             }
         }
@@ -155,7 +315,8 @@ public class TaskManager : MonoBehaviour
         {
             taskRepo[randomTask].steps[0] = fireSteps[Random.Range(0, fireSteps.Length)];
         }
-        if (activeTasks[randomTask].name == taskRepo[randomTask].name)
+        //before adding, check if it already exists, or if it's one of those that need to be added under certain condictions
+        if (activeTasks[randomTask].name == taskRepo[randomTask].name || activeTasks[randomTask].name == "Fix Lights" || activeTasks[randomTask].name == "Warm Milk" || activeTasks[randomTask].name == "Make Lunch" || activeTasks[randomTask].name == "Hug Teddy Bear")
         {
             ChooseRandomTask();
         } else
@@ -166,6 +327,7 @@ public class TaskManager : MonoBehaviour
 
     public void TaskAdd(int index)
     {
+        countActiveTasks ++;
         activeTasks[index] = taskRepo[index];
         Debug.Log(activeTasks[index].name + " [" + activeTasks[index].currentStep + " / " + activeTasks[index].steps.Length + "]");
         Debug.Log(activeTasks[index].steps[activeTasks[index].currentStep].name + " [" + activeTasks[index].steps[activeTasks[index].currentStep].location + "]");
@@ -200,6 +362,12 @@ public class TaskManager : MonoBehaviour
                         break;
                     case "parrs":
                         stats.ParanoiaRegenSpeed *= activeTasks[index].varStartMod[i];
+                        break;
+                    case "grav":
+                        if(activeTasks[index].varStartMod[i] == 0)
+                        {
+                            movement.gravity = false;
+                        }
                         break;
                 }
             }
