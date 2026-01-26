@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isInside;
+    public static bool isInside;
     private GameObject interior;
     private GameObject exterior;
 
-    public int stage;
+    public static int stage;
 
     void Start()
     {
