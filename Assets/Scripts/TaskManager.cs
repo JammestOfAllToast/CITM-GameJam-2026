@@ -46,7 +46,7 @@ public class TaskManager : MonoBehaviour
     public Task[] activeTasks;
 
 
-    private int countActiveTasks = 0;
+    public int countActiveTasks = 0;
     private float taskTimer = 0;
 
     void Start()
@@ -212,7 +212,11 @@ public class TaskManager : MonoBehaviour
                 }
             }
         }
-        taskTimer += Time.deltaTime;
+        if (timeController.CurrentTime < timeController.EndHour)
+        {
+            taskTimer += Time.deltaTime;
+        }
+        
         if (taskTimer >= Random.Range(minTimeToTask, maxTimeToTask))
         {
             if (countActiveTasks < taskRepo.Length-1) //this one is because of Electrical, will need to be increeased when other non-randomly chosen tasks are implemented
@@ -336,7 +340,7 @@ public class TaskManager : MonoBehaviour
 
     public bool IsNotChoosable(int i)
     {
-        if (taskRepo[i].name == "Fix Lights" || taskRepo[i].name == "Warm Milk" || taskRepo[i].name == "Make Lunch" || taskRepo[i].name == "Hug Teddy Bear")
+        if (taskRepo[i].name == "Fix Lights" || taskRepo[i].name == "Warm Milk" || taskRepo[i].name == "Make Lunch" || taskRepo[i].name == "Hug Teddy Bear" || taskRepo[i].name == "Refuel Ship")
         {
             return true;
         }
