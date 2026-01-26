@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
 
     public static int stage;
+    public static int finalStage = 5;
+
 
     void Start()
     {
