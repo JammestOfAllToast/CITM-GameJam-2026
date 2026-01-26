@@ -55,7 +55,7 @@ public class TaskManager : MonoBehaviour
         timeController = GameObject.FindWithTag("TimeWizard").GetComponent<TimeController>();
         movement = GetComponent<PlayerMovement>();
 
-         taskRepo = new Task[5];
+         taskRepo = new Task[6];
         activeTasks = new Task[taskRepo.Length];
 
 
@@ -158,6 +158,20 @@ public class TaskManager : MonoBehaviour
         taskRepo[4].varEndMod = new float[1];
             taskRepo[4].varEndName[0] = "o2rs";
             taskRepo[4].varEndMod[0] = 2f;
+
+
+        // If lights below 0, then task is triggered
+        taskRepo[5].name = "Refuel Ship";
+        taskRepo[5].importance = 2;
+        taskRepo[5].currentStep = 0;
+        taskRepo[5].steps = new Step[2];
+            taskRepo[5].steps[0].id = "fuelPlant";
+            taskRepo[5].steps[0].location = "Garden";
+            taskRepo[5].steps[0].name = "Harvest Fuel Plant";
+            taskRepo[5].steps[0].id = "fuelMachine";
+            taskRepo[5].steps[0].location = "Engine Room";
+            taskRepo[5].steps[0].name = "Create Fuel";
+            //ADD LATER
         
         //if (taskRepo.Length > 0)
         //{
@@ -211,6 +225,13 @@ public class TaskManager : MonoBehaviour
                     TaskAdd(FindTaskOfName(taskRepo, "Fix Lights"));
                 }
             }
+            if (stats.Fuel < 30)
+            {
+                if (FindTaskOfName(activeTasks, "Refuel Ship") == -1)
+                {
+                    TaskAdd(FindTaskOfName(taskRepo, "Refuel Ship"));
+                }
+            }
         }
         if (timeController.CurrentTime < timeController.EndHour)
         {
@@ -219,7 +240,7 @@ public class TaskManager : MonoBehaviour
         
         if (taskTimer >= Random.Range(minTimeToTask, maxTimeToTask))
         {
-            if (countActiveTasks < taskRepo.Length-1) //this one is because of Electrical, will need to be increeased when other non-randomly chosen tasks are implemented
+            if (countActiveTasks < taskRepo.Length-2) //this one is because of Electrical & Fuel, will need to be increeased when other non-randomly chosen tasks are implemented
             {
                 ChooseRandomTask();
             }

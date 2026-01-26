@@ -30,6 +30,7 @@ public bool HasElectricity;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameManager.paused = false;
         IsDead = false;
         Wintext.enabled = false;
     }
@@ -44,7 +45,7 @@ public bool HasElectricity;
                 if(Fuel < 0f)
                 {
                     Fuel = 0f;
-                    HasElectricity = false;
+                  //  HasElectricity = false;
                     IsThereOxygenAround = false;
                 }
             }
@@ -81,12 +82,12 @@ public bool HasElectricity;
             if(Paranoia < ParanoiaHardLimit && IsParanoid){Paranoia += ParanoiaUsageSpeed * Time.deltaTime;}
             else if(Paranoia > ParanoiaHardLimit){Paranoia = ParanoiaHardLimit;}
         }
-
+/*
         else if(!IsDead && TC.CurrentTime > TC.EndHour * 60f)
         {
             HasWon = true;
             Time.timeScale = 0;
             Wintext.enabled = true;
-        }
+        }*/ //Added this ti gameManager
     }
 }

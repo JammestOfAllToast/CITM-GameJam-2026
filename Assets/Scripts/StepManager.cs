@@ -22,12 +22,16 @@ public class StepManager : MonoBehaviour, IInteractable
     private float ogWT;
     private float ogT;
     private bool hasSounded;
+    private bool altSounded;
+
 
     private int taskIndex;
 
     private TaskManager taskManager;
     private AudioSource audioSource;
     public AudioClip sound;
+    public AudioClip altSound;
+
 
     
     void Start()
@@ -92,6 +96,7 @@ public class StepManager : MonoBehaviour, IInteractable
                 objectInteractMessage = "Step Complete";
                 if (audioSource != null && !hasSounded)
                 {
+                    audioSource.Stop();
                     audioSource.PlayOneShot(sound, 1f);
                     hasSounded = true;
                 }
@@ -102,6 +107,11 @@ public class StepManager : MonoBehaviour, IInteractable
             }
             if (waitTime > -1) {waitTime -= Time.deltaTime;}
             if (!hidden) {objectInteractMessage = "Please wait " + waitTime.ToString("F1") + " seconds";}
+            if (!altSounded && audioSource != null && altSound != null)
+            {
+                audioSource.PlayOneShot(altSound, 1f);
+                altSounded = true;
+            }
         }
 
     }
@@ -152,6 +162,7 @@ public class StepManager : MonoBehaviour, IInteractable
         waitTime = ogWT;
         time = ogT;
         hasSounded = false;
+        altSounded = false;
         timerStarted = false;
     }   
     public void Interact()

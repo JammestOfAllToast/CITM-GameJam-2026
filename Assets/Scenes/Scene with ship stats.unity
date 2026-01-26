@@ -234,6 +234,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!65 &324264635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -884,6 +885,7 @@ GameObject:
   - component: {fileID: 769632407}
   - component: {fileID: 769632406}
   - component: {fileID: 769632405}
+  - component: {fileID: 769632410}
   m_Layer: 0
   m_Name: step_plant2
   m_TagString: Untagged
@@ -910,8 +912,9 @@ MonoBehaviour:
   time: 2
   ogMSG: 
   hidden: 0
-  waitTime: 0
-  sound: {fileID: 0}
+  waitTime: 6
+  sound: {fileID: 8300000, guid: fd4b67a7e36f4474b97886380f475308, type: 3}
+  altSound: {fileID: 8300000, guid: a9bb43e3bbbc76f64b8e3cb46e6b88bc, type: 3}
 --- !u!65 &769632406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1004,6 +1007,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &769632410
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769632404}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1367,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 8300000, guid: d0e0507f90d205b42978719324fd423f, type: 3}
+  altSound: {fileID: 0}
 --- !u!65 &869112377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2267,6 +2368,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!65 &1363935559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2537,6 +2639,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!65 &1520778401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3156,6 +3259,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!135 &1813759375
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3475,6 +3579,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!135 &1874065769
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3993,6 +4098,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 1
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!136 &1968151590
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4128,6 +4234,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!65 &2035488083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4292,6 +4399,7 @@ MonoBehaviour:
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
+  altSound: {fileID: 0}
 --- !u!65 &2068851058
 BoxCollider:
   m_ObjectHideFlags: 0

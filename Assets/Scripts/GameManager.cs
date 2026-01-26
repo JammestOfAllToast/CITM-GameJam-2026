@@ -32,12 +32,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (tm.countActiveTasks == 0 && tc.CurrentTime >= tc.EndHour && stats.HasElectricity)//multiplied by whatever really., add stats.Fuel check
+        if (stats.IsDead)
+        {
+            paused = true;
+        }
+        if (tm.countActiveTasks == 0 && tc.CurrentTime >= tc.EndHour && stats.HasElectricity && !stats.IsDead)//multiplied by whatever really., add stats.Fuel check
         {
             stats.HasWon = true;
         }
 
-        if (pauseAction.WasPressedThisFrame())
+        if (pauseAction.WasPressedThisFrame() && !stats.IsDead)
         {
             paused = !paused;
         }

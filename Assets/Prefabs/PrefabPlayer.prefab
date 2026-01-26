@@ -1329,9 +1329,9 @@ MonoBehaviour:
   HasWon: 0
   TC: {fileID: 5798466870267021076}
   Wintext: {fileID: 8443471704654688534}
-  Fuel: 0
-  FuelUsage: 0
-  HasElectricity: 0
+  Fuel: 100
+  FuelUsage: 1
+  HasElectricity: 1
 --- !u!114 &6139323199905780178
 MonoBehaviour:
   m_ObjectHideFlags: 0
