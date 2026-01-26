@@ -4,7 +4,6 @@ using System.Collections;
 public class TaskManager : MonoBehaviour
 {
     public PlayerStats stats;
-    public GameManager gManager;
     public TimeController timeController;
     public PlayerMovement movement;
 
@@ -53,7 +52,6 @@ public class TaskManager : MonoBehaviour
     void Start()
     {
         stats = GetComponent<PlayerStats>();
-        gManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         timeController = GameObject.FindWithTag("TimeWizard").GetComponent<TimeController>();
         movement = GetComponent<PlayerMovement>();
 
@@ -193,13 +191,12 @@ public class TaskManager : MonoBehaviour
             TaskAdd(FindTaskOfName(taskRepo, "Make Food"));
         }
 
-        if (gManager != null)
-        {
-            for (int i = 0; i < gManager.stage + 2; i++)
+
+            for (int i = 0; i < GameManager.stage + 2; i++)
             {
                 ChooseRandomTask();
             }
-        }
+        
     }
 
     // Update is called once per frame
