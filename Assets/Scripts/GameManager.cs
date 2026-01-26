@@ -39,8 +39,17 @@ public class GameManager : MonoBehaviour
         {
             paused = !paused;
         }
-        int pauseInt = paused ? 0 : 1;
-        Time.timeScale = pauseInt;
+
+        if (paused)
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.Confined;
+        } else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1f;
+        }
+            Cursor.visible = paused;
 
         if (interior != null && interior != null) {
             if (isInside)

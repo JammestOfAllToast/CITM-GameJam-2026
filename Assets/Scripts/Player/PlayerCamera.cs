@@ -37,12 +37,6 @@ public class PlayerCamera : MonoBehaviour
         playerControls.Player.Disable();
     }
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     private void Update() 
     {
         Vector2 mouseDelta = lookAction.ReadValue<Vector2>();
