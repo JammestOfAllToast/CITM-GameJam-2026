@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             paused = !paused;
         }
-        int pauseInt = paused ? 1 : 0;
+        int pauseInt = paused ? 0 : 1;
         Time.timeScale = pauseInt;
 
         if (interior != null && interior != null) {
