@@ -10,7 +10,7 @@ public class StepManager : MonoBehaviour, IInteractable
     public string objectInteractMessage;
     public string stepId;
     public bool destroyTool;
-
+    private bool ogDestroyTool;
     public string requirement;
     public float time = 0;
     public string ogMSG;
@@ -42,6 +42,7 @@ public class StepManager : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
         ogMSG = objectInteractMessage;
         StartCoroutine(Initialize());
+        ogDestroyTool = destroyTool;
     }
 
     IEnumerator Initialize()
@@ -61,7 +62,6 @@ public class StepManager : MonoBehaviour, IInteractable
     {
         if (taskIndex == -1)
         {
-            Debug.Log("I'm still here!");
             for(int i = 0; i < taskManager.hullSteps.Length; i++)
             {
                 if (taskManager.hullSteps[i].id == stepId)
@@ -103,6 +103,7 @@ public class StepManager : MonoBehaviour, IInteractable
                 if (destroyTool && GameObject.Find(requirement) != null)
                 {
                     GameObject.Find(requirement).SetActive(false);
+                    destroyTool = false;
                 }
             }
             if (waitTime > -1) {waitTime -= Time.deltaTime;}
@@ -164,6 +165,7 @@ public class StepManager : MonoBehaviour, IInteractable
         hasSounded = false;
         altSounded = false;
         timerStarted = false;
+        destroyTool = ogDestroyTool;
     }   
     public void Interact()
     {
