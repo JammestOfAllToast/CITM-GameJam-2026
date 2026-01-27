@@ -16,7 +16,7 @@ public class TaskUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tasks.activeTasks != null/*GameManager.openInventory*/)
+        if (tasks.activeTasks != null && GameManager.inventoryOpen)
         {
             textMesh.text = "";
             for (int i = 0; i < tasks.activeTasks.Length; i++)
