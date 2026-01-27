@@ -39,18 +39,21 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update() 
     {
-        Vector2 mouseDelta = lookAction.ReadValue<Vector2>();
+        if (!GameManager.inventoryOpen)
+        {  
+            Vector2 mouseDelta = lookAction.ReadValue<Vector2>();
 
-        //get mouse input
-        float mouseX = mouseDelta.x * sensX * Time.deltaTime;
-        float mouseY = mouseDelta.y * sensY * Time.deltaTime;
+            //get mouse input
+            float mouseX = mouseDelta.x * sensX * Time.deltaTime;
+            float mouseY = mouseDelta.y * sensY * Time.deltaTime;
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        //rotate cam and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            //rotate cam and orientation
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
     }
 }
