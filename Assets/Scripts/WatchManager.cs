@@ -2,26 +2,16 @@ using UnityEngine;
 
 public class WatchManager : MonoBehaviour
 {
-    private bool closed;
     void OnEnable()
     {
-        GetComponent<Animator>().Play("WatchAnimation", -1, 1f);
-        closed = false;
+        GetComponent<Animator>().Play("WatchAnimation", -1, 0f);
     }
 
     void Update()
     {
-        if (!GameManager.inventoryOpen && !closed)
+        if (!GameManager.inventoryOpen)
         {
-            closed = true;
-            GetComponent<Animator>().speed = -1f;
-            GetComponent<Animator>().Play("WatchAnimation", -1, 1f);
-            Invoke("Deactivate", GetComponent<Animation>().clip.length);
+            gameObject.SetActive(false);
         }
-    }
-
-    void Deactivate()
-    {
-        gameObject.SetActive(false);
     }
 }

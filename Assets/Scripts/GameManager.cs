@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             tm = player.GetComponent<TaskManager>();
             stats = player.GetComponent<PlayerStats>();
 
-            watch = GameObject.FindWithTag("Player")
+            watch = GameObject.FindWithTag("MainCamera")
             .GetComponentsInChildren<Transform>(true)
             .FirstOrDefault(t => t.CompareTag("Watch"))
             ?.gameObject;
