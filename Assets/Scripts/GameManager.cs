@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     public static bool isInside;
     public static bool paused = false;
+    public static bool inventoryOpen = false;
+
     private static GameManager instance;
 
     private GameObject interior;
@@ -13,9 +16,12 @@ public class GameManager : MonoBehaviour
     private TaskManager tm;
     private TimeController tc;
     private PlayerStats stats;
+    private GameObject watch;
 
     private InputSystem_Actions uiControls;
     private InputAction pauseAction;
+    private InputAction inventoryAction;
+
 
     public static int stage;
     public static int finalStage = 5;
@@ -36,7 +42,10 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         pauseAction = uiControls.UI.Pause;
+        inventoryAction = uiControls.UI.Inventory;
+
         pauseAction.Enable();
+        inventoryAction.Enable();
         
         uiControls.UI.Enable();
         
@@ -48,6 +57,10 @@ public class GameManager : MonoBehaviour
         if (pauseAction != null)
         {
             pauseAction.Disable();
+        }
+        if (inventoryAction != null)
+        {
+            inventoryAction.Disable();
         }
         if (uiControls != null)
         {
@@ -72,6 +85,12 @@ public class GameManager : MonoBehaviour
         {
             tm = player.GetComponent<TaskManager>();
             stats = player.GetComponent<PlayerStats>();
+
+            watch = GameObject.FindWithTag("Player")
+            .GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.CompareTag("Watch"))
+            ?.gameObject;
+
         }
         
         GameObject timeWizard = GameObject.FindWithTag("TimeWizard");
@@ -112,17 +131,35 @@ public class GameManager : MonoBehaviour
             paused = !paused;
         }
 
+        if (inventoryAction != null && inventoryAction.WasPressedThisFrame() && (stats == null || !stats.IsDead))
+        {
+            inventoryOpen = !inventoryOpen;
+        }
+
         if (paused)
         {
             Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.Confined;
         } 
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1f;
         }
-        Cursor.visible = paused;
+
+        if (paused || inventoryOpen)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        } else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        if (inventoryOpen)
+        {
+            Debug.Log("watch");
+            watch.SetActive(true);
+        }
 
         if (interior != null && exterior != null) 
         {
