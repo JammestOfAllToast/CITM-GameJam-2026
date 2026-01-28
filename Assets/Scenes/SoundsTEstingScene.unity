@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
   m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
@@ -223,14 +223,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Repair
   stepId: gardenHull
   destroyTool: 0
   requirement: Welder
   time: 5
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c2cb8bfc671c72c796da2ce80b01d6e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
   sensX: 10
   sensY: 10
@@ -589,8 +589,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_CustomShadowLayers: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c28869fa254317de88afd2c6d2ca613d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolManager
   objectInteractMessage: Pick up Welder
   toolName: Welder
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -903,14 +903,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Water Plant
   stepId: plant2
   destroyTool: 0
-  requirement:
+  requirement: 
   time: 2
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 6
   sound: {fileID: 8300000, guid: fd4b67a7e36f4474b97886380f475308, type: 3}
@@ -1132,8 +1132,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b4688613df4da47baf6fa2c57bc453, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vignette
   vol: {fileID: 0}
 --- !u!1 &846855105
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac5da64e75b4302a9846607474b735bb, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!4 &846855107
 Transform:
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3854111276c3a559887304796f8ada3c, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CryoPod
   objectInteractMessage: SLEEP
   stats: {fileID: 0}
@@ -1370,14 +1370,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Water Plants
   stepId: plant1
   destroyTool: 1
   requirement: Water
   time: 2
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 8300000, guid: d0e0507f90d205b42978719324fd423f, type: 3}
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c28869fa254317de88afd2c6d2ca613d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolManager
   objectInteractMessage: Pick up Extinguisher
   toolName: Extinguisher
@@ -1951,7 +1951,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1105019fa7443403b3296461a0bd697, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveCamera
   cameraPosition: {fileID: 2053173833}
 --- !u!4 &1115623769
@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
   m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
@@ -2029,7 +2029,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acaac628331fed544aab82934a471395, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectHolder
   holding: {fileID: 0}
   children:
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c28869fa254317de88afd2c6d2ca613d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolManager
   objectInteractMessage: Pick up Water
   toolName: Water
@@ -2371,14 +2371,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Repair
   stepId: engineHull
   destroyTool: 0
   requirement: Welder
   time: 5
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2642,14 +2642,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Hold E to fix
   stepId: radio
   destroyTool: 0
   requirement: Welder
   time: 10
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -2850,7 +2850,7 @@ GameObject:
   - component: {fileID: 1675716119}
   m_Layer: 7
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3021,7 +3021,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3143,7 +3143,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
@@ -3229,7 +3229,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac860c5b315c07c07a2669efe32846e1, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowWhenPause
   image: {fileID: 5762246}
 --- !u!1 &1813759373
@@ -3262,14 +3262,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
   objectInteractMessage: Extinguish Fire (needs extinguisher)
   stepId: cryoFire
   destroyTool: 0
   requirement: Extinguisher
   time: 5
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -3445,7 +3445,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d26b9911e1c1540aec127eac800a92, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeController
   StartingHour: 0
   TimeMultiplier: 1
@@ -3462,7 +3462,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3582,14 +3582,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
   objectInteractMessage: Extinguish Fire (needs extinguisher)
   stepId: machineFire
   destroyTool: 0
   requirement: Extinguisher
   time: 5
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -3764,7 +3764,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3735068047f17e359f7a80c6cbd9640, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementOnGround
   moveSpeed: 5
   orientation: {fileID: 1823132766}
@@ -3785,7 +3785,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9106789f3a0b54b499e0e9d89d791cef, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   Oxygen: 100
   OxygenUsageSpeed: 2
@@ -3814,7 +3814,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17e1e6b498fce65ccb7b7cb14416aac2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
   playerCamera: {fileID: 330585545}
   interactionText: {fileID: 1442574262}
@@ -3829,11 +3829,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e0da78edd90a6a93a266e2eea565da6, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   stats: {fileID: 1902762671}
   timeController: {fileID: 1873290522}
   movement: {fileID: 1902762670}
+  objectHolder: {fileID: 0}
   minTimeToTask: 2
   maxTimeToTask: 3
   DEWIT: 0
@@ -3848,13 +3849,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 548719e50752dd245be1ccfdfac01e91, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   AC:
   - {fileID: 8300000, guid: 568fa2f48b20fbf2b880828ea037193c, type: 3}
   - {fileID: 8300000, guid: dc2506bdbd12d1c03881dd4a1b62c9ce, type: 3}
   - {fileID: 8300000, guid: 5d7f3b5314b1540da8c141c97d800b19, type: 3}
   - {fileID: 8300000, guid: b68471b3b53c073c3b16abff3a83d5ee, type: 3}
+  - {fileID: 8300000, guid: 6a39b0d28a1d35f3c8dce3bf9fc04f5c, type: 3}
   TC: {fileID: 1873290522}
   count: 1
 --- !u!82 &1902762675
@@ -4004,7 +4006,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90d386779c811aa96ae942b47f762872, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
 --- !u!114 &1920024286
 MonoBehaviour:
@@ -4016,7 +4018,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -4059,7 +4061,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument:
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1920024287
@@ -4072,7 +4074,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4219,14 +4221,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
   objectInteractMessage: Fix Lights mfer
   stepId: lights
   destroyTool: 0
-  requirement:
+  requirement: 
   time: 0
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 1
   sound: {fileID: 0}
@@ -4355,14 +4357,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Repair
   stepId: navHull
   destroyTool: 0
   requirement: Welder
   time: 5
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -4520,14 +4522,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectStat
   objectInteractMessage: Water Plant
   stepId: plant3
   destroyTool: 0
-  requirement:
+  requirement: 
   time: 2
-  ogMSG:
+  ogMSG: 
   hidden: 0
   waitTime: 0
   sound: {fileID: 0}
@@ -4674,7 +4676,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90d386779c811aa96ae942b47f762872, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
 --- !u!114 &2098805316
 MonoBehaviour:
@@ -4686,7 +4688,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -4729,7 +4731,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument:
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2098805317
@@ -4742,7 +4744,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

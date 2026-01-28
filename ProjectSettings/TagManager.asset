@@ -9,6 +9,8 @@ TagManager:
   - ShipExterior
   - TimeWizard
   - GameManager
+  - Watch
+  - floor
   layers:
   - Default
   - TransparentFX
