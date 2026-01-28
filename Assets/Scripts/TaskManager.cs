@@ -339,7 +339,7 @@ public class TaskManager : MonoBehaviour
         }
 
 
-            for (int i = 0; i < GameManager.stage + 7; i++)
+            for (int i = 0; i < GameManager.stage + 2; i++)
             {
                 ChooseRandomTask();
             }

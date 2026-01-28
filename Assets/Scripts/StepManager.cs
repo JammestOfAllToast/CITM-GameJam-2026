@@ -1,4 +1,5 @@
 using DefaultNamespace;
+using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class StepManager : MonoBehaviour, IInteractable
     private bool altSounded;
     private bool workSounded;
     private bool wasInteractingLastFrame;
+    private bool isRadioSoundPlaying = false;
 
     private int taskIndex;
 
@@ -33,6 +35,7 @@ public class StepManager : MonoBehaviour, IInteractable
     public AudioClip sound;
     public AudioClip altSound;
     public AudioClip workSound;
+    public AudioClip radioLoopSound;
 
     
     void Start()
@@ -77,6 +80,13 @@ public class StepManager : MonoBehaviour, IInteractable
                     taskIndex = taskManager.FindTaskOfName(taskManager.taskRepo, "Extinguish Fire");
                 } 
             }
+                        for(int i = 0; i < taskManager.fireSteps.Length; i++)
+            {
+                if (taskManager.waterSteps[i].id == stepId)
+                {
+                    taskIndex = taskManager.FindTaskOfName(taskManager.taskRepo, "Fix Water Pipes");
+                } 
+            }
         }
         if (taskManager.taskRepo != null && taskIndex != -1) {
             if (taskManager.activeTasks[taskIndex].name == default(TaskManager.Task).name || taskManager.activeTasks[taskIndex].steps[taskManager.activeTasks[taskIndex].currentStep].id != stepId) 
@@ -90,6 +100,7 @@ public class StepManager : MonoBehaviour, IInteractable
                 }
             }
         }
+        HandleRadioSound();
         if (timerStarted)
         {
             if (waitTime <= 0) {
@@ -121,7 +132,6 @@ public class StepManager : MonoBehaviour, IInteractable
         }
         wasInteractingLastFrame = false;
     }
-
     public int findMyTask()
     { 
         for (int i = 0; i < taskManager.taskRepo.Length; i++)
@@ -137,6 +147,46 @@ public class StepManager : MonoBehaviour, IInteractable
         return -1;
     }
 
+    void HandleRadioSound()
+    {
+        if (!GameManager.paused)
+        {
+            if (stepId == "radio" && taskManager != null && taskManager.taskRepo != null && taskIndex != -1)
+            {
+                if (taskManager.activeTasks[taskIndex].name == "Broken Radio" && 
+                taskManager.activeTasks[taskIndex].steps[taskManager.activeTasks[taskIndex].currentStep].id == stepId &&
+                !hidden)
+                {
+                    if (!isRadioSoundPlaying && audioSource != null && radioLoopSound != null)
+                    {
+                        audioSource.clip = radioLoopSound;
+                        audioSource.loop = true;
+                        audioSource.volume = 0.5f;
+                        audioSource.Play();
+                        isRadioSoundPlaying = true;
+                    }
+                }
+                else
+                {
+                    StopRadioSound();
+                }
+            }
+        }
+        if (isRadioSoundPlaying == true && GameManager.paused)
+        {
+            StopRadioSound();
+        }
+    }
+
+    void StopRadioSound()
+    {
+        if (isRadioSoundPlaying && audioSource != null)
+        {
+            audioSource.Stop();
+            audioSource.loop = false;
+            isRadioSoundPlaying = false;
+        }
+    }
    public void Hide()
     {
         StopWorkSound();

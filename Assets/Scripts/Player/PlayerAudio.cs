@@ -20,7 +20,6 @@ public class PlayerAudio : MonoBehaviour
     private bool isGrounded = false;
     public int count = 1;
     
-    // Track what's currently playing
     private AudioClip currentlyPlayingBreath = null;
     private bool hasPlayedAssfixiation = false;
     
@@ -122,7 +121,7 @@ public class PlayerAudio : MonoBehaviour
                     AS.Stop();
                 }
                 
-                AS.pitch = Random.Range(0.9f, 1.1f);
+                AS.pitch = Random.Range(1f, 1f);
                 AS.PlayOneShot(AC[5]);
                 hasPlayedAssfixiation = true;
                 currentlyPlayingBreath = null;

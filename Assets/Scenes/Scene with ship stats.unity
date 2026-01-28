@@ -237,6 +237,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 8300000, guid: 9ffd8aa36b977a441870d9c11ae35152, type: 3}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!136 &5965182
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -599,6 +600,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &254144532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -832,6 +834,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 139b86593061c2a2f9c332d9a381c874, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &324264635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1680,7 +1683,7 @@ MonoBehaviour:
   objectInteractMessage: Repair Panel Two
   stepId: panelTwo
   destroyTool: 1
-  requirement: solarPanel
+  requirement: Solar Panel
   time: 5
   ogMSG: 
   hidden: 0
@@ -1688,6 +1691,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &513521425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1815,7 +1819,7 @@ MonoBehaviour:
   objectInteractMessage: Repair Panel One
   stepId: panelOne
   destroyTool: 1
-  requirement: solarPanel
+  requirement: Solar Panel
   time: 5
   ogMSG: 
   hidden: 0
@@ -1823,6 +1827,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &542810274
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1969,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolManager
   objectInteractMessage: Pick up Solar Panel
-  toolName: solarPanel
+  toolName: Solar Panel
   objectHolder: {fileID: 0}
 --- !u!23 &551797642
 MeshRenderer:
@@ -2086,6 +2091,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 8300000, guid: 9ffd8aa36b977a441870d9c11ae35152, type: 3}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!136 &630885198
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2321,6 +2327,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &649872683
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2690,6 +2697,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &728742471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2826,6 +2834,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 717f5d53901963e4287d176e1ced28ec, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &769632406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3059,6 +3068,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 8300000, guid: a9bb43e3bbbc76f64b8e3cb46e6b88bc, type: 3}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &814964399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3513,6 +3523,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 717f5d53901963e4287d176e1ced28ec, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &869112377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3745,6 +3756,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &876344728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4658,6 +4670,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1306093643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4793,6 +4806,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1322364609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4929,6 +4943,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 139b86593061c2a2f9c332d9a381c874, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1363935559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5161,6 +5176,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1381630139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5296,6 +5312,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1392885668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5568,6 +5585,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1454224380
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5791,8 +5809,9 @@ MonoBehaviour:
   hidden: 0
   waitTime: 5
   sound: {fileID: 0}
-  altSound: {fileID: 8300000, guid: 3dde2e259de8d83de87e480938a51a0d, type: 3}
+  altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 139b86593061c2a2f9c332d9a381c874, type: 3}
+  radioLoopSound: {fileID: 8300000, guid: 3dde2e259de8d83de87e480938a51a0d, type: 3}
 --- !u!65 &1520778401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6017,7 +6036,7 @@ MonoBehaviour:
   objectInteractMessage: Repair Panel Four
   stepId: panelFour
   destroyTool: 1
-  requirement: solarPanel
+  requirement: Solar Panel
   time: 5
   ogMSG: 
   hidden: 0
@@ -6025,6 +6044,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1591213731
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6528,6 +6548,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 8300000, guid: 9ffd8aa36b977a441870d9c11ae35152, type: 3}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!136 &1692742784
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6763,6 +6784,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 8300000, guid: 9ffd8aa36b977a441870d9c11ae35152, type: 3}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!136 &1700099802
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7087,6 +7109,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 8300000, guid: 9ffd8aa36b977a441870d9c11ae35152, type: 3}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!136 &1745952071
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7290,7 +7313,7 @@ GameObject:
   - component: {fileID: 1757524859}
   - component: {fileID: 1757524858}
   m_Layer: 0
-  m_Name: solarPanel
+  m_Name: Solar Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7529,6 +7552,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!135 &1781894275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7664,7 +7688,8 @@ MonoBehaviour:
   waitTime: 0
   sound: {fileID: 0}
   altSound: {fileID: 0}
-  workSound: {fileID: 8300000, guid: ee28bcbf4f884664fbb586b07a237dab, type: 3}
+  workSound: {fileID: 8300000, guid: c4d1e559fd08f684eb9173b50aa94eb0, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!135 &1813759375
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8040,6 +8065,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1852766177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8191,6 +8217,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 6752a552ca0b92c4b83ee5059b7c392d, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1866350472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8578,7 +8605,8 @@ MonoBehaviour:
   waitTime: 0
   sound: {fileID: 0}
   altSound: {fileID: 0}
-  workSound: {fileID: 8300000, guid: ee28bcbf4f884664fbb586b07a237dab, type: 3}
+  workSound: {fileID: 8300000, guid: c4d1e559fd08f684eb9173b50aa94eb0, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!135 &1874065769
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9037,7 +9065,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b68471b3b53c073c3b16abff3a83d5ee, type: 3}
   - {fileID: 8300000, guid: 6a39b0d28a1d35f3c8dce3bf9fc04f5c, type: 3}
   - {fileID: 8300000, guid: 1ac21f70be7cb564481223eef785dd39, type: 3}
-  - {fileID: 8300000, guid: 18af7cd1d420b358fad2a7afffc8d138, type: 3}
+  - {fileID: 8300000, guid: 272c6c5cb4f3ec0489140d0e159fc275, type: 3}
   - {fileID: 8300000, guid: 66c2bf051df00910f91c24557d273fbd, type: 3}
   TC: {fileID: 0}
   stats: {fileID: 0}
@@ -9235,6 +9263,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1937794213
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9448,7 +9477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096ca06a9871ef2e38dae4f9f105c8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StepManager
-  objectInteractMessage: Fix Lights mfer
+  objectInteractMessage: Fix Light
   stepId: lights
   destroyTool: 0
   requirement: 
@@ -9459,6 +9488,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!136 &1968151590
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9588,7 +9618,7 @@ MonoBehaviour:
   objectInteractMessage: Repair Panel Three
   stepId: panelThree
   destroyTool: 1
-  requirement: solarPanel
+  requirement: Solar Panel
   time: 5
   ogMSG: 
   hidden: 0
@@ -9596,6 +9626,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 0}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &1970086884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9732,6 +9763,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 139b86593061c2a2f9c332d9a381c874, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &2035488083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9996,6 +10028,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: 717f5d53901963e4287d176e1ced28ec, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &2068851058
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10375,6 +10408,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   altSound: {fileID: 0}
   workSound: {fileID: 8300000, guid: da0ad7a48925afe43be1fb6d89576099, type: 3}
+  radioLoopSound: {fileID: 0}
 --- !u!65 &2123682921
 BoxCollider:
   m_ObjectHideFlags: 0
