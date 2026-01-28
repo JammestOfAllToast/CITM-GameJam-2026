@@ -4,9 +4,13 @@ using System.Collections;
 
 public class SceneChanger : MonoBehaviour
 {
+    public bool gotoGameSceneAfterDelay;
+    public bool gotoMainSceneAfterDelay;
+    public float delay;
+
     public void GoToGameScene()
     {
-        SceneManager.LoadScene("Scene with ship stats"); //later change to GameScene
+        SceneManager.LoadScene("RespawnCutScene"); //later change to GameScene
     }
     public void GoToMainMenu()
     {
@@ -14,11 +18,27 @@ public class SceneChanger : MonoBehaviour
     }
     public void GoToCredits()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("CreditsCutScene");
     }
 
     public void CloseGame()
     {
         Application.Quit();
+    }
+
+    void Update()
+    {
+        delay -= Time.deltaTime;
+        if (delay <= 0)
+        {
+            if (gotoGameSceneAfterDelay)
+            {
+                SceneManager.LoadScene("Scene with ship stats");
+            }
+            if (gotoMainSceneAfterDelay)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 }

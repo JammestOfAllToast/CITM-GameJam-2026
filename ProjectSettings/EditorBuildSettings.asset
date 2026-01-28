@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8aceabb9a7812557c8e9436231f08ec2
   - enabled: 1
+    path: Assets/Scenes/RespawnCutScene.unity
+    guid: 4ede864a5baad366386d517da448e43a
+  - enabled: 1
     path: Assets/Scenes/Scene with ship stats.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 6da23c81bb59a461c9d3852d45570b50
+  - enabled: 1
+    path: Assets/Scenes/CreditsCutScene.unity
+    guid: 496f6d95805230f0db67bcd74d933837
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
