@@ -57,7 +57,7 @@ public bool HasElectricity;
             }
             else if (Paranoia < 101f)
             {
-                OxygenUsageSpeed = 1f;
+                OxygenUsageSpeed = 0.25f;
             }
             if (IsThereOxygenAround){
                 if(Oxygen < 100f){Oxygen += OxygenRegenSpeed * Time.deltaTime;} //Replenishes Oxygen if there's oxygen around

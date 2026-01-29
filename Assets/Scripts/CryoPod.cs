@@ -31,7 +31,7 @@ public class CryoPod : MonoBehaviour, IInteractable
         GameManager.stage++;
         if (GameManager.stage > GameManager.finalStage)
         {
-            SceneManager.LoadScene("CreditsScene");
+            SceneManager.LoadScene("CreditsCutScene");
         } else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

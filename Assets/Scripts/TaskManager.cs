@@ -118,11 +118,11 @@ public class TaskManager : MonoBehaviour
         taskRepo[2].varStartName = new string[1];
         taskRepo[2].varStartMod = new float[1];
             taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
-            taskRepo[2].varStartMod[0] = 0.5f;
+            taskRepo[2].varStartMod[0] = 0.8f;
         taskRepo[2].varEndName = new string[1];
         taskRepo[2].varEndMod = new float[1];
             taskRepo[2].varEndName[0] = "o2rs";
-            taskRepo[2].varEndMod[0] = 2f;
+            taskRepo[2].varEndMod[0] = 1.25f;
 
 // FIX LIGHTS
         // If lights below 0, then task is triggered
@@ -149,14 +149,18 @@ public class TaskManager : MonoBehaviour
             taskRepo[3].steps[4].id = "lights";
             taskRepo[3].steps[4].location = "Engine Room";
             taskRepo[3].steps[4].name = "Reset breakers (fix solar panels first)";
-        taskRepo[2].varStartName = new string[1];
-        taskRepo[2].varStartMod = new float[1];
-            taskRepo[2].varStartName[0] = "o2rs"; //change to ship oxigen regen instead
-            taskRepo[2].varStartMod[0] = 0.5f;
-        taskRepo[2].varEndName = new string[1];
-        taskRepo[2].varEndMod = new float[1];
-            taskRepo[2].varEndName[0] = "o2rs";
-            taskRepo[2].varEndMod[0] = 2f; 
+        taskRepo[2].varStartName = new string[2];
+        taskRepo[2].varStartMod = new float[2];
+            taskRepo[2].varStartName[0] = "elec"; 
+            taskRepo[2].varStartMod[0] = 0;
+            taskRepo[2].varStartName[1] = "grav"; 
+            taskRepo[2].varStartMod[1] = 0;
+        taskRepo[2].varEndName = new string[2];
+        taskRepo[2].varEndMod = new float[2];
+            taskRepo[2].varEndName[0] = "elec";
+            taskRepo[2].varEndMod[0] = 1; 
+            taskRepo[2].varEndName[1] = "grav"; 
+            taskRepo[2].varEndMod[1] = 0;
        
 // EXTINGUISH FIRE
         taskRepo[4].name = "Extinguish Fire";
@@ -206,6 +210,10 @@ public class TaskManager : MonoBehaviour
             taskRepo[5].steps[4].id = "makeFuel";
             taskRepo[5].steps[4].location = "Engine Room";
             taskRepo[5].steps[4].name = "Create Fuel";
+        taskRepo[5].varEndName = new string[1];
+        taskRepo[5].varEndMod = new float[1];
+            taskRepo[5].varEndName[0] = "fuel";
+            taskRepo[5].varEndMod[0] = 100f;
 
 // REROUTE NAVIGATION
         taskRepo[6].name = "Reroute Navigation";
@@ -293,6 +301,10 @@ public class TaskManager : MonoBehaviour
             taskRepo[10].steps[3].id = "drinkMilk";
             taskRepo[10].steps[3].name = "Drinking Milk";
             taskRepo[10].steps[3].location = "Kitchen";
+        taskRepo[10].varEndName = new string[1];
+        taskRepo[10].varEndMod = new float[1];
+            taskRepo[10].varEndName[0] = "par";
+            taskRepo[10].varEndMod[0] = -60f;
 
 // HUG TEDDY BEAR
         taskRepo[11].name = "Hug Teddy Bear";
@@ -302,6 +314,10 @@ public class TaskManager : MonoBehaviour
             taskRepo[11].steps[0].id = "hugBear";
             taskRepo[11].steps[0].name = "Hug Teddy Bear";
             taskRepo[11].steps[0].location = "Cryostasis Chamber";
+        taskRepo[11].varEndName = new string[1];
+        taskRepo[11].varEndMod = new float[1];
+            taskRepo[11].varEndName[0] = "par";
+            taskRepo[11].varEndMod[0] = -60f;
 
 
 // OLD CODE
@@ -331,11 +347,10 @@ public class TaskManager : MonoBehaviour
         //     s.sceneObject.SetActive(false);
         // }
 
-        if (FindTaskOfName(taskRepo, "Warm Milk") != -1 && FindTaskOfName(taskRepo, "Hug Teddy bear") != -1 && FindTaskOfName(taskRepo, "Make Food") == -1) 
+        if (FindTaskOfName(taskRepo, "Warm Milk") != -1 && FindTaskOfName(taskRepo, "Hug Teddy bear") != -1) 
         {
             TaskAdd(FindTaskOfName(taskRepo, "Warm Milk"));
             TaskAdd(FindTaskOfName(taskRepo, "Hug Teddy bear"));
-            TaskAdd(FindTaskOfName(taskRepo, "Make Food"));
         }
 
 
@@ -371,7 +386,7 @@ public class TaskManager : MonoBehaviour
             taskTimer += Time.deltaTime;
         }
         
-        if (taskTimer >= Random.Range(minTimeToTask, maxTimeToTask))
+        if (taskTimer >= Random.Range(minTimeToTask, maxTimeToTask) && GameManager.stage < Random.Range(0, 9))
         {
             if (countActiveTasks < taskRepo.Length-2) //this one is because of Electrical & Fuel, will need to be increeased when other non-randomly chosen tasks are implemented
             {
@@ -481,7 +496,16 @@ public class TaskManager : MonoBehaviour
                         {
                             movement.gravity = true;
                         }
-                    break;
+                        break;
+                    case "elec":
+                        if(activeTasks[index].varEndMod[i] == 1)
+                        {
+                            stats.HasElectricity = true;
+                        }
+                        break;
+                    case "fuel":
+                        stats.Fuel += activeTasks[index].varEndMod[i];
+                        break;
                 }
             }
         }
@@ -505,7 +529,7 @@ public class TaskManager : MonoBehaviour
 
     public bool IsNotChoosable(int i)
     {
-        if (taskRepo[i].name == "Warm Milk" ||taskRepo[i].name == "Refuel Ship")
+        if (taskRepo[i].name == "Warm Milk" || taskRepo[i].name == "Refuel Ship" || taskRepo[i].name == "Hug Teddy Bear")
         {
             return true;
         }
@@ -582,6 +606,15 @@ public class TaskManager : MonoBehaviour
                         {
                             movement.gravity = false;
                         }
+                        break;
+                    case "elec":
+                        if(activeTasks[index].varStartMod[i] == 0)
+                        {
+                            stats.HasElectricity = false;
+                        }
+                        break;
+                    case "fuel":
+                        stats.Fuel += activeTasks[index].varStartMod[i];
                         break;
                 }
             }

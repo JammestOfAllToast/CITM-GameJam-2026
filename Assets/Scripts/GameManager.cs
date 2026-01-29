@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private InputAction inventoryAction;
 
 
-    public static int stage;
+    public static int stage = 1;
     public static int finalStage = 5;
 
     private void Awake()
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         
         if (tm != null && tc != null && stats != null)
         {
-            if (tm.countActiveTasks == 0 && tc.CurrentTime >= tc.EndHour && stats.HasElectricity && !stats.IsDead)
+            if (tm.countActiveTasks == 0 && tc.CurrentTime >= tc.EndHour * 60f && stats.HasElectricity && !stats.IsDead)
             {
                 stats.HasWon = true;
             }
